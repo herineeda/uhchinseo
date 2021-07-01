@@ -56,7 +56,13 @@ window.addEventListener('DOMContentLoaded', event => {
     var nickname_area = document.getElementById('confirm_button');
     nickname_area.addEventListener('click', function(){
         const name = document.getElementById('user_name').value;
+        // 닉네임 로컬 스토리지에 저장
+        localStorage.setItem('user_name', name);
         document.getElementById("nickname-area").innerText = name+"님! 환영합니다.";
+
+        // localStorage에 값이 있으면 아래처럼 닉네임 변경으로 버튼 이름 바뀌게 만들어야될듯
+        // var user_name = localStorage.getItem('user_name');
+        // if user_name != null (저장된 값이 있음)
 
         const btn_name=document.getElementById('btn-create-name');
         console.log(btn_name);
@@ -66,7 +72,6 @@ window.addEventListener('DOMContentLoaded', event => {
         const modal_2 = document.querySelector('.modal_texts');
         modal_1.style.display='none';
         modal_2.style.display='none';
-    
     });
 
     var model_on = document.getElementById("btn-create-name");
