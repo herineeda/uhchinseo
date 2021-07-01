@@ -9919,13 +9919,21 @@ header.masthead .masthead-heading-1 {
   font-family: 'retro-font';
 }
 
-header.masthead .masthead-heading-2 {
+header.masthead .masthead-heading-2-score {
   font-size: 1.8rem;
   font-weight: 100;
   line-height: 1.5rem;
   margin-bottom: 1.5rem;
   text-align: right;
   padding-right: 8rem;
+  font-family: 'retro-font';
+}
+
+header.masthead .masthead-heading-2 {
+  font-size: 1.8rem;
+  font-weight: 100;
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
   font-family: 'retro-font';
 }
 
