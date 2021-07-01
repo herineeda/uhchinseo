@@ -10169,7 +10169,7 @@ header.masthead .masthead-heading-3 {
 .modal__background{
 /* position: fixed; */
   top:0; left: 0; bottom: 0; right: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background-color: #7c0000cc
 }
  
 /* 모달창 영역을 꾸민다 */
@@ -10177,6 +10177,7 @@ header.masthead .masthead-heading-3 {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   display : none; 
   position: absolute;
+  z-index:1;
   top: calc(50vh - 100px); left: calc(50vw - 200px);
   background-color: white;
   display: flex; justify-content: center;

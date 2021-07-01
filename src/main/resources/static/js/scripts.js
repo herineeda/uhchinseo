@@ -69,7 +69,6 @@ window.addEventListener('DOMContentLoaded', event => {
     
     });
 
-
     var model_on = document.getElementById("btn-create-name");
     model_on.addEventListener('click', function(){
         const modal_1 = document.querySelector('.modal_box');
@@ -78,7 +77,5 @@ window.addEventListener('DOMContentLoaded', event => {
         modal_2.style.display='block';
     });
 
-    // 이거 원래 .slick()이라고 써있었는데 그게 맞는건가여??
-    // 다른 페이지들에서는 close버튼 누르면 안닫히는데 html을 새로 추가해서 그런건가여??
-   $('.slick-container').click();
+//   $('.slick-container').click();
 });
