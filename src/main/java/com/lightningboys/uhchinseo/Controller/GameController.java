@@ -21,6 +21,23 @@ public class GameController {
     private final AzGameService azGameService;
     private final BalanceGameService balanceGameService;
 
+    @GetMapping("/balance")
+    public String balanceSulmeong(){
+        return "games/balance";
+    }
+    @GetMapping("/music")
+    public String musicSulmeong(){
+        return "games/stage";
+    }
+    @GetMapping("/ag")
+    public String agSulmeong(){
+        return "games/old_test";
+    }
+    @GetMapping("/newWord")
+    public String newWordSulmeong(){
+        return "games/new_word";
+    }
+
     @ResponseBody
     @GetMapping("/azGame")
     public List<AZGame> azGame(@RequestParam("pageNum")int pageNum){
