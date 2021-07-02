@@ -49,10 +49,10 @@ public class GameController {
 
 //    게임 결과 화면
 
-    @GetMapping("/balanceGameResult")
-    public String balanceResult() {
-        return "play/result";
-    }
+//    @GetMapping("/balanceGameResult")
+//    public String balanceResult() {
+//        return "play/result";
+//    }
 
     @GetMapping("/musicGameResult")
     public String musicResult() {
