@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
@@ -71,17 +70,20 @@ public class GameController {
     }
 
 
-
-    @ResponseBody
     @GetMapping("/azGame")
-    public List<AZGame> azGame(@RequestParam("pageNum") int pageNum) {
-        Page<AZGame> azGame = azGameService.findAll(pageNum);
-        List<AZGame> azGameList = new ArrayList<>();
-        for (AZGame game : azGame) {
-            azGameList.add(game);
-        }
-        return azGameList;
+
+        public String azGame (Model model, @RequestParam("pageNum") int pageNum){
+            Page<AZGame> azGame = azGameService.findAll(pageNum);
+            List<AZGame> azGameList = new ArrayList<>();
+            for (AZGame game : azGame){
+                azGameList.add(game);
+            }
+            model.addAttribute("azGameList",azGameList);
+
+        return "play/balance_play"; //azgame_play.html 없어서 임의로 balance_play.html로 연결함.
+
     }
+
 
     @ResponseBody
     @GetMapping("/balanceGame")
@@ -104,16 +106,17 @@ public class GameController {
     }
 
 
-    @ResponseBody
     @GetMapping("/musicGame")
-    public List<MusicStageGame> musicStageGame(@RequestParam("pageNum") int pageNum) {
+    public String musicStageGame(Model model, @RequestParam("pageNum") int pageNum) {
         Page<MusicStageGame> musicStageGame = musicGameService.findAll(pageNum);
         List<MusicStageGame> musicStageGameList = new ArrayList<>();
         for (MusicStageGame game : musicStageGame) {
             musicStageGameList.add(game);
         }
-        return musicStageGameList;
+        model.addAttribute("musicStageGameList", musicStageGameList);
+        return "play/stage_play";
     }
+
 
     @ResponseBody
     @PostMapping("musicGame")
@@ -124,16 +127,19 @@ public class GameController {
         return "update Success!";
     }
 
-    @ResponseBody
+
     @GetMapping("/newWordGame")
-    public List<NewWordGame> newWordGame(@RequestParam("pageNum") int pageNum) {
+    public String newWordGame(Model model, @RequestParam("pageNum") int pageNum) {
         Page<NewWordGame> newWordGame = newWordGameService.findAll(pageNum);
         List<NewWordGame> newWordGameList = new ArrayList<>();
         for (NewWordGame game : newWordGame){
             newWordGameList.add(game);
         }
-        return newWordGameList;
+        model.addAttribute("newWordGameList", newWordGameList);
+
+        return "play/new_word_play";
     }
+
 
     @ResponseBody
     @PostMapping("newWordGame")
