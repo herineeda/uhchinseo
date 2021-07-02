@@ -72,7 +72,7 @@ public class GameController {
 
     @GetMapping("/azGame")
 
-        public String azGame (Model model, @RequestParam("pageNum") int pageNum){
+        public String azGame (Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum){
             Page<AZGame> azGame = azGameService.findAll(pageNum);
             List<AZGame> azGameList = new ArrayList<>();
             for (AZGame game : azGame){
@@ -85,7 +85,7 @@ public class GameController {
     }
 
     @GetMapping("/balanceGame")
-    public String BalanceGame(Model model, @RequestParam("pageNum") int pageNum) {
+    public String BalanceGame(Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum) {
         Page<BalanceGame> BalanceGame = balanceGameService.findAll(pageNum);
         List<BalanceGame> balanceGameList = new ArrayList<>();
         for (BalanceGame balanceGame : BalanceGame) {
@@ -104,7 +104,7 @@ public class GameController {
     }
 
     @GetMapping("/musicGame")
-    public String musicStageGame(Model model, @RequestParam("pageNum") int pageNum) {
+    public String musicStageGame(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
         Page<MusicStageGame> musicStageGame = musicGameService.findAll(pageNum);
         List<MusicStageGame> musicStageGameList = new ArrayList<>();
         for (MusicStageGame game : musicStageGame) {
@@ -115,17 +115,9 @@ public class GameController {
     }
 
 
-    @PostMapping("musicGame")
-    public void updateScore(@RequestBody MusicForm musicForm){
-        Long id = musicForm.getId();
-        int score = musicForm.getScore();
-        musicGameService.updateScore(id, score);
-
-    }
-
-
     @GetMapping("/newWordGame")
-    public String newWordGame(Model model, @RequestParam("pageNum") int pageNum) {
+    public String newWordGame(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+
         Page<NewWordGame> newWordGame = newWordGameService.findAll(pageNum);
         List<NewWordGame> newWordGameList = new ArrayList<>();
         for (NewWordGame game : newWordGame){
@@ -136,13 +128,5 @@ public class GameController {
         return "play/new_word_play";
     }
 
-
-    @PostMapping("newWordGame")
-    public void updateScore(@RequestBody NewWordForm newWordForm){
-        Long id = newWordForm.getId();
-        int score = newWordForm.getScore();
-        newWordGameService.updateScore(id, score);
-
-    }
 
 }

@@ -13,9 +13,4 @@ public interface NewWordGameRepository extends JpaRepository<NewWordGame, Long> 
 
     Page<NewWordGame> findAll(Pageable pageable);
 
-    @Modifying
-    @Query("update new_word_game nw set nw.answer =: newWordScore where nw.id =: id")
-        //신조어게임 점수 세는 쿼리문 넣기
-    void updateScore(@Param("id") Long id, @Param("newWordScore") int newWordScore);
-
 }

@@ -14,11 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class NewWordGameService {
 
     private final NewWordGameRepository newWordGameRepository;
+
     public Page<NewWordGame> findAll(int pageNum) {
-        return newWordGameRepository.findAll(PageRequest.of(-1, 3));
-    }
-    @Transactional
-    public void updateScore(Long id, int newWordScore) {
-        newWordGameRepository.updateScore(id, newWordScore + 10);
+        return newWordGameRepository.findAll(PageRequest.of(pageNum-1, 3));
     }
 }

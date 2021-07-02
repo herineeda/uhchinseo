@@ -16,12 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MusicGameService {
 
     private final MusicStageGameRepository musicStageGameRepository;
+
     public Page<MusicStageGame> findAll(int pageNum){
         return musicStageGameRepository.findAll(PageRequest.of(pageNum-1, 3));
     }
 
-    @Transactional
-    public void updateScore(Long id, int musicStageScore){
-        musicStageGameRepository.updateScore(id, musicStageScore + 10);
-    }
 }

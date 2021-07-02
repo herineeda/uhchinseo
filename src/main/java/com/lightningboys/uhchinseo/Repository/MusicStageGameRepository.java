@@ -13,8 +13,4 @@ public interface MusicStageGameRepository extends JpaRepository <MusicStageGame,
 
     Page<MusicStageGame> findAll(Pageable pageable);
 
-    @Modifying
-    @Query("update Music_Stage_Game ms set ms.score =: musicStageScore where ms.musicStageImage.id =:id")
-    void updateScore(@Param("id")Long id, @Param("musicStageScore")int musicStageScore);
-
 }
