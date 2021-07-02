@@ -1,14 +1,12 @@
 package com.lightningboys.uhchinseo.Controller;
 
 import com.lightningboys.uhchinseo.Domain.User;
+import com.lightningboys.uhchinseo.Repository.UserRepository;
 import com.lightningboys.uhchinseo.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -17,6 +15,7 @@ import java.util.Optional;
 public class MainController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @GetMapping("/")
     public String main(Model model){
@@ -41,6 +40,7 @@ public class MainController {
 
         return id;
     }
+
 
     @ResponseBody
     @GetMapping("findNickName")

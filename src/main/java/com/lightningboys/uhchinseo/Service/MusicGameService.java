@@ -1,8 +1,7 @@
 package com.lightningboys.uhchinseo.Service;
 
-import com.lightningboys.uhchinseo.Domain.AZGame;
+
 import com.lightningboys.uhchinseo.Domain.MusicStageGame;
-import com.lightningboys.uhchinseo.Repository.AzGameRepository;
 import com.lightningboys.uhchinseo.Repository.MusicStageGameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,4 +20,8 @@ public class MusicGameService {
         return musicStageGameRepository.findAll(PageRequest.of(pageNum-1, 3));
     }
 
+    @Transactional
+    public void updateScore(Long id, int musicStageScore){
+        musicStageGameRepository.updateScore(id, musicStageScore + 10);
+    }
 }

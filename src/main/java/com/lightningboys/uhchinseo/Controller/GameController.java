@@ -3,9 +3,11 @@ package com.lightningboys.uhchinseo.Controller;
 import com.lightningboys.uhchinseo.Domain.AZGame;
 import com.lightningboys.uhchinseo.Domain.BalanceGame;
 import com.lightningboys.uhchinseo.Domain.MusicStageGame;
+import com.lightningboys.uhchinseo.Domain.NewWordGame;
 import com.lightningboys.uhchinseo.Service.AzGameService;
 import com.lightningboys.uhchinseo.Service.BalanceGameService;
 import com.lightningboys.uhchinseo.Service.MusicGameService;
+import com.lightningboys.uhchinseo.Service.NewWordGameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,9 @@ public class GameController {
     private final AzGameService azGameService;
     private final BalanceGameService balanceGameService;
     private final MusicGameService musicGameService;
+    private final NewWordGameService newWordGameService;
 
+//    게임 설명 화면
     @GetMapping("/balance")
     public String balanceSulmeong() {
         return "games/balance";
@@ -44,10 +48,28 @@ public class GameController {
         return "games/new_word";
     }
 
-    @GetMapping("/musicStage")
-    public String musicStageSulmeong() {
-        return "games/stage";
+//    게임 결과 화면
+
+    @GetMapping("/balanceGameResult")
+    public String balanceResult() {
+        return "play/result";
     }
+
+    @GetMapping("/musicGameResult")
+    public String musicResult() {
+        return "play/result";
+    }
+
+    @GetMapping("/agGameResult")
+    public String agResult() {
+        return "play/result";
+    }
+
+    @GetMapping("/newWordGameResult")
+    public String newWordResult() {
+        return "play/result";
+    }
+
 
 
     @ResponseBody
@@ -83,7 +105,7 @@ public class GameController {
 
 
     @ResponseBody
-    @GetMapping("/musicStageGame")
+    @GetMapping("/musicGame")
     public List<MusicStageGame> musicStageGame(@RequestParam("pageNum") int pageNum) {
         Page<MusicStageGame> musicStageGame = musicGameService.findAll(pageNum);
         List<MusicStageGame> musicStageGameList = new ArrayList<>();
@@ -93,5 +115,33 @@ public class GameController {
         return musicStageGameList;
     }
 
-}
+    @ResponseBody
+    @PostMapping("musicGame")
+    public String updateScore(@RequestBody MusicForm musicForm){
+        Long id = musicForm.getId();
+        int score = musicForm.getScore();
+        musicGameService.updateScore(id, score);
+        return "update Success!";
+    }
 
+    @ResponseBody
+    @GetMapping("/newWordGame")
+    public List<NewWordGame> newWordGame(@RequestParam("pageNum") int pageNum) {
+        Page<NewWordGame> newWordGame = newWordGameService.findAll(pageNum);
+        List<NewWordGame> newWordGameList = new ArrayList<>();
+        for (NewWordGame game : newWordGame){
+            newWordGameList.add(game);
+        }
+        return newWordGameList;
+    }
+
+    @ResponseBody
+    @PostMapping("newWordGame")
+    public String updateScore(@RequestBody NewWordForm newWordForm){
+        Long id = newWordForm.getId();
+        int score = newWordForm.getScore();
+        newWordGameService.updateScore(id, score);
+        return "update success";
+    }
+
+}

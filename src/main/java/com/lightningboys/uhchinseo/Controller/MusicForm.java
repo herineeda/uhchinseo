@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class NewWordForm {
-    private Long id;
+
+public class MusicForm {
+    private long id;
     private int score;
 }

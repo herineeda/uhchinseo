@@ -14,12 +14,18 @@ class GameServiceTest {
 
     @Autowired
     BalanceGameService balanceGameService;
-
+    @Autowired
+    MusicGameService musicGameService;
 
     @Test
 //    @Rollback(value = false)
     void updateCnt(){
         balanceGameService.updateCnt(1L, 0);
 
+    }
+
+    @Test
+    void updateScore(){
+        musicGameService.updateScore(1L, 10);
     }
 }
