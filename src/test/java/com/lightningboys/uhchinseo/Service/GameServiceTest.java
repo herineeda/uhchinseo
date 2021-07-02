@@ -24,8 +24,8 @@ class GameServiceTest {
 
     }
 
-    @Test
-    void updateScore(){
-        musicGameService.updateScore(1L, 10);
-    }
+//    @Test
+//    void updateScore(){
+//        musicGameService.updateScore(1L, 10);
+//    }
 }

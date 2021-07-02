@@ -80,7 +80,7 @@ public class GameController {
             }
             model.addAttribute("azGameList",azGameList);
 
-        return "play/balance_play"; //azgame_play.html 없어서 임의로 balance_play.html로 연결함.
+        return "play/old_test_play";
 
     }
 
