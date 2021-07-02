@@ -84,27 +84,24 @@ public class GameController {
 
     }
 
-
-    @ResponseBody
     @GetMapping("/balanceGame")
-    public List<BalanceGame> BalanceGame(@RequestParam("pageNum") int pageNum) {
+    public String BalanceGame(Model model, @RequestParam("pageNum") int pageNum) {
         Page<BalanceGame> BalanceGame = balanceGameService.findAll(pageNum);
         List<BalanceGame> balanceGameList = new ArrayList<>();
         for (BalanceGame balanceGame : BalanceGame) {
             balanceGameList.add(balanceGame);
         }
-        return balanceGameList;
+        model.addAttribute("balanceGameList", balanceGameList);
+
+        return "play/balance_play";
     }
 
-    @ResponseBody
     @PostMapping("balanceGame")
-    public String updateCnt(@RequestBody BalanceForm balanceForm) {
+    public void updateCnt(@RequestBody BalanceForm balanceForm) {
         Long id = balanceForm.getId();
         int balanceCnt = balanceForm.getBalanceCnt();
         balanceGameService.updateCnt(id, balanceCnt);
-        return "updateSuccess";
     }
-
 
     @GetMapping("/musicGame")
     public String musicStageGame(Model model, @RequestParam("pageNum") int pageNum) {
@@ -118,13 +115,12 @@ public class GameController {
     }
 
 
-    @ResponseBody
     @PostMapping("musicGame")
-    public String updateScore(@RequestBody MusicForm musicForm){
+    public void updateScore(@RequestBody MusicForm musicForm){
         Long id = musicForm.getId();
         int score = musicForm.getScore();
         musicGameService.updateScore(id, score);
-        return "update Success!";
+
     }
 
 
@@ -141,13 +137,12 @@ public class GameController {
     }
 
 
-    @ResponseBody
     @PostMapping("newWordGame")
-    public String updateScore(@RequestBody NewWordForm newWordForm){
+    public void updateScore(@RequestBody NewWordForm newWordForm){
         Long id = newWordForm.getId();
         int score = newWordForm.getScore();
         newWordGameService.updateScore(id, score);
-        return "update success";
+
     }
 
 }
