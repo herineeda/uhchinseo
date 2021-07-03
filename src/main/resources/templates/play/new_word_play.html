@@ -60,13 +60,15 @@
                     <div class="text-center">
                     <div class="row">
                         <div class="text-center">
-                            <div class="col-lg-5 mx-auto" style="background-color: darkseagreen; margin-bottom: 3rem; padding:2rem; font-size: 6rem;">ㅈㅂㅈㅇ</div>
+                            <div class="col-lg-5 mx-auto question" style="background-color: darkseagreen; margin-bottom: 3rem; padding:2rem; font-size: 6rem;">ㅈㅂㅈㅇ</div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem; "><div class="answer-wrong answer">제발좀요</div></div>
-                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer-right answer">정보좀요</div></div>
-                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer">지워줘요</div></div>
+                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem; "><div class="answer-wrong answer">
+                            <button class="first">제발좀요</button></div></div>
+                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer-right answer">
+                            <button class="second">제발좀요</button></div></div>
+                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer"> <button class="third">제발좀요</button></div></div>
                     </div>    
                     <div class="row">
                         <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >▶ 정답 보기</div>
@@ -75,7 +77,14 @@
                             <button id="next-text">▶ next</button></div>
                         <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
                         <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display:none;">▶ result</div> 
-                    </div> 
+                    </div>
+                    <div>
+                        <table>
+                            <tr th:each="newWord : ${newWordGameList}" style="display: none">
+                                <td class="invisible-but-need" th:text="${newWord.question} +'/'+${newWord.selection} +'/'+${newWord.answer}+'/'" style="display: none"></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 </div>
             </section>
@@ -95,10 +104,11 @@
             <script src="/js/name.js"></script>
         </div>
         <script th:inline="javascript">
-            const answerList = [];
-            const questionList = [];
-            const categoryList = [];
-            const selectionList =[];
+            const answerList = [];  // 정답 여부
+            const questionList = [];    // 문제
+            const categoryList = [];    // 카테고리번호(없애도 될듯?)
+            const selectionList =[];    // 선택지
+            let question;   // 문제 담는 변수
             let pageNum = 1 ;
 
             let f_arr =[];
@@ -122,66 +132,65 @@
             console.log(categoryList);
             console.log(selectionList);
 
-            //
-            document.querySelector('.first').innerHTML = selectionList[0]+' - '+musicList[0];
-            document.querySelector('.second').innerHTML = singerList[1]+' - '+musicList[1];
-            document.querySelector('.third').innerHTML = singerList[2]+' - '+ musicList[2];
+            // 문제
+            question = document.querySelector('.question');
+            question.innerHTML=questionList[0];
 
-            // answer_arr[0] = answerList[0];
-            // answer_arr[1] = answerList[1];
-            // answer_arr[2] = answerList[2];
-            // console.log(answer_arr);
-            //
-            //
-            // // 이미지 불러오기
-            // $(document).ready(function(){
-            //     let img_id;
-            //     img_id = document.getElementById('stage_img');
-            //     img_id.src = '/assets/img/games_image/'+imgList[0]+'.png';
-            // })
-            //
-            //
-            // // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
-            // let next_btn;
-            // next_btn = document.getElementById('next-text');
-            // next_btn.addEventListener('click', function(){
-            //     console.log('버튼 클릭!');
-            //     pageNum += 1;
-            //
-            //     if (pageNum==10){
-            //         document.getElementById('show_result').style.display ='block';
-            //         next_btn.style.display='none';
-            //     }
-            //     console.log(pageNum)
-            //     fetch(`http://localhost:8081/musicGame?pageNum=${pageNum}`)
-            //         .then(res => res.text())
-            //         .then(res => {
-            //             console.log(res)
-            //             f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
-            //             console.log(f_arr)
-            //
-            //             s_arr1 = f_arr[1].split('/');
-            //             s_arr2 = f_arr[2].split('/');
-            //             s_arr3 = f_arr[3].split('/');
-            //
-            //             // 정답 배열로 저장
-            //             answer_arr[0] = s_arr1[1];
-            //             answer_arr[1] = s_arr2[1];
-            //             answer_arr[2] = s_arr3[1];
-            //
-            //             document.querySelector('.first').innerHTML = s_arr1[0];
-            //             document.querySelector('.second').innerHTML = s_arr2[0];
-            //             document.querySelector('.third').innerHTML = s_arr3[0];
-            //
-            //             console.log(answer_arr);
-            //         });
-            // });
-            //
-            // let answer_btn;
-            // answer_btn = document.getElementById('show_answer');
-            // answer_btn.addEventListener('click',function (){
-            //
-            // });
+            // 선택지 정보 입력
+            document.querySelector('.first').innerHTML = selectionList[0];
+            document.querySelector('.second').innerHTML = selectionList[1];
+            document.querySelector('.third').innerHTML = selectionList[2];
+
+
+            answer_arr[0] = answerList[0];
+            answer_arr[1] = answerList[1];
+            answer_arr[2] = answerList[2];
+            console.log(answer_arr);
+
+
+            // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
+            let next_btn;
+            next_btn = document.getElementById('next-text');
+            next_btn.addEventListener('click', function(){
+                console.log('버튼 클릭!');
+                pageNum += 1;
+
+                if (pageNum==10){
+                    document.getElementById('show_result').style.display ='block';
+                    next_btn.style.display='none';
+                }
+                console.log(pageNum)
+                fetch(`http://localhost:8081/newWordGame?pageNum=${pageNum}`)
+                    .then(res => res.text())
+                    .then(res => {
+                        console.log(res)
+                        f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
+                        console.log(f_arr)
+
+                        s_arr1 = f_arr[1].split('/');
+                        s_arr2 = f_arr[2].split('/');
+                        s_arr3 = f_arr[3].split('/');
+
+                        // 정답 배열로 저장
+                        answer_arr[0] = s_arr1[1];
+                        answer_arr[1] = s_arr2[1];
+                        answer_arr[2] = s_arr3[1];
+
+                        document.querySelector('.first').innerHTML = s_arr1[1];
+                        document.querySelector('.second').innerHTML = s_arr2[1];
+                        document.querySelector('.third').innerHTML = s_arr3[1];
+
+                        console.log(answer_arr);
+
+                        question.innerHTML=s_arr1[0];
+                    });
+            });
+
+            let answer_btn;
+            answer_btn = document.getElementById('show_answer');
+            answer_btn.addEventListener('click',function (){
+
+            });
 
         </script>
     </body>
