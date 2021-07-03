@@ -95,17 +95,17 @@
             const musicList = [];
             const imgList =[];
             let pageNum = 1 ;
-            /*<![CDATA[*/
+            <![CDATA[
 
-            /*[# th:each="musicStage : ${musicStageGameList}"]*/
+            [# th:each="musicStage : ${musicStageGameList}"]
             answerList.push(/*[[${musicStage.answer}]]*/);
             singerList.push(/*[[${musicStage.singer}]]*/);
             musicList.push(/*[[${musicStage.music}]]*/);
-            /*[/]*/
+            [/]
 
-            /*]]>*/
+            ]]>
 
-            //
+
             document.querySelector('.first').innerHTML = singerList[0]+' - '+musicList[0];
             document.querySelector('.second').innerHTML = singerList[1]+' - '+musicList[1];
             document.querySelector('.third').innerHTML = singerList[2]+' - '+ musicList[2];
