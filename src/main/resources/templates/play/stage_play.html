@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >▶ 정답 보기</div>
                     <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
-                    <div><button class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;">▶ next</button></div>
+                    <div><button id="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;">▶ next</button></div>
                     <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
                     <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;">▶ result</div>
                 </div>
@@ -85,7 +85,7 @@
             const singerList = [];
             const musicList = [];
             const imgList =[];
-            let pageNum;
+            let pageNum = 1 ;
             /*<![CDATA[*/
 
             /*[# th:each="musicStage : ${musicStageGameList}"]*/
@@ -93,7 +93,7 @@
             singerList.push(/*[[${musicStage.singer}]]*/);
             musicList.push(/*[[${musicStage.music}]]*/);
             /*[/]*/
-            pageNum =
+
             /*]]>*/
 
             //
@@ -106,12 +106,12 @@
             console.log(musicList);
 
 
-            console.log(pageNum);
             // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
             let next_btn;
-            next_btn = document.querySelector('.next-text');
+            next_btn = document.getElementById('next-text');
             next_btn.addEventListener('click', function(){
-                // fetch()
+                console.log('버튼 클릭!');
+                fetch("http://localhost:8081/musicGame?pageNum=3")
             });
         </script>
     </body>
