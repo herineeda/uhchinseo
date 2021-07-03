@@ -53,6 +53,15 @@
                     <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem; "><div class="answer-wrong answer"><button class="first">선택지1</button></div></div>
                     <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer-right answer"><button class="second">선택지2</button></div></div>
                     <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer"><button class="third">선택지3</button></div></div>
+
+                    <div>
+                        <table>
+                            <tr th:each="musicStage : ${musicStageGameList}" style="display: none">
+                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'" style="display: none"></td>
+                            </tr>
+                        </table>
+                    </div>
+
                 </div>
 
                 <div class="row">
@@ -114,11 +123,21 @@
                 pageNum += 1;
                 console.log(pageNum)
                 fetch(`http://localhost:8081/musicGame?pageNum=${pageNum}`)
-                    .then(res => res.json())
+                    .then(res => res.text())
                     .then(res => {
-                        if (res.success) {
-                            console.log('fetch성공');
-                        }
+                        let f_arr =[];
+                        let s_arr1;
+                        let s_arr2;
+                        let s_arr3;
+
+                        f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
+                        s_arr1 = f_arr[1].split('/');
+                        s_arr2 = f_arr[2].split('/');
+                        s_arr3 = f_arr[3].split('/');
+
+                        document.querySelector('.first').innerHTML = s_arr1[0];
+                        document.querySelector('.second').innerHTML = s_arr2[0];
+                        document.querySelector('.third').innerHTML = s_arr3[0];
                     });
             });
         </script>
