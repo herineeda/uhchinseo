@@ -10,6 +10,8 @@ import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -17,8 +19,7 @@ public class MusicGameService {
 
     private final MusicStageGameRepository musicStageGameRepository;
 
-    public Page<MusicStageGame> findAll(int pageNum){
-        return musicStageGameRepository.findAll(PageRequest.of(pageNum-1, 3));
-    }
-
+   public List<MusicStageGame> musicStageGames(int randomNumber, int pageNum){
+       return musicStageGameRepository.randomQ(randomNumber, PageRequest.of(pageNum-1, 3));
+   }
 }

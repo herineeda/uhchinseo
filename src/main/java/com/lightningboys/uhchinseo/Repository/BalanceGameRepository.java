@@ -9,12 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 public interface BalanceGameRepository extends JpaRepository<BalanceGame, Long> {
 
-    Page<BalanceGame> findAll(Pageable pageable);
-
-    @Modifying
-    @Query("update Balance_Game b set b.cnt =:balanceCount where b.id =:id")
-    void updateCnt(@Param("id")Long id, @Param("balanceCount")int balanceCount);
+    @Query("select b from Balance_Game b where b.category =:id ")
+   List<BalanceGame> findRandomQ(@RequestParam("id")int id, Pageable pageable);
 }

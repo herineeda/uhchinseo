@@ -18,5 +18,5 @@ public class BalanceGame {
     @Column(name= "balance_count")
     private int cnt;
     @Column(name = "balance_category")
-    private String category;
+    private int category;
 }

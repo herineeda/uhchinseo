@@ -18,7 +18,7 @@ public class NewWordGame {
     private String question;
 
     @Column(name = "new_word_category")
-    private String category;
+    private int category;
 
     @Column(name = "new_word_selection")
     private String selection;

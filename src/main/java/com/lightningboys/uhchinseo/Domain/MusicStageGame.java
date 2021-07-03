@@ -14,9 +14,8 @@ public class MusicStageGame {
     @Column(name = "music_stage_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "music_stage_image_id")
-    private MusicStageImage musicStageImage;
+    @Column(name="music_stage_image_id")
+    private int musicStageImage;
 
     @Column(name="music_stage_singer")
     private String singer;

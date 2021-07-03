@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -15,7 +17,7 @@ public class NewWordGameService {
 
     private final NewWordGameRepository newWordGameRepository;
 
-    public Page<NewWordGame> findAll(int pageNum) {
-        return newWordGameRepository.findAll(PageRequest.of(pageNum-1, 3));
+    public List<NewWordGame> newWordGames(int randomNUmber, int pageNum){
+        return newWordGameRepository.randomQuiz(randomNUmber, PageRequest.of(pageNum-1, 3));
     }
 }

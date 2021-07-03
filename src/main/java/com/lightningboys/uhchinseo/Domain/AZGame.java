@@ -23,7 +23,7 @@ public class AZGame {
     private String answer;
 
     @Column(name = "az_category")
-    private Character category;
+    private int category;
 
 }
 

@@ -9,6 +9,7 @@ import com.lightningboys.uhchinseo.Service.BalanceGameService;
 import com.lightningboys.uhchinseo.Service.MusicGameService;
 import com.lightningboys.uhchinseo.Service.NewWordGameService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,6 +27,10 @@ public class GameController {
     private final BalanceGameService balanceGameService;
     private final MusicGameService musicGameService;
     private final NewWordGameService newWordGameService;
+
+    @Autowired
+    private final RandomNumber randomNumber = new RandomNumber();
+    List<Integer> randomList = randomNumber.randomNumber();
 
 //    게임 설명 화면
     @GetMapping("/balance")
@@ -47,13 +53,6 @@ public class GameController {
         return "games/new_word";
     }
 
-//    게임 결과 화면
-
-//    @GetMapping("/balanceGameResult")
-//    public String balanceResult() {
-//        return "play/result";
-//    }
-
     @GetMapping("/musicGameResult")
     public String musicResult() {
         return "play/result";
@@ -71,14 +70,10 @@ public class GameController {
 
 
     @GetMapping("/azGame")
+    public String azGame (Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum){
 
-        public String azGame (Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum){
-            Page<AZGame> azGame = azGameService.findAll(pageNum);
-            List<AZGame> azGameList = new ArrayList<>();
-            for (AZGame game : azGame){
-                azGameList.add(game);
-            }
-            model.addAttribute("azGameList",azGameList);
+        List<AZGame> azGame = azGameService.findRandomQ(randomList.get(pageNum - 1), pageNum);
+        model.addAttribute("azGameList",azGame);
 
         return "play/old_test_play";
 
@@ -86,30 +81,18 @@ public class GameController {
 
     @GetMapping("/balanceGame")
     public String BalanceGame(Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum) {
-        Page<BalanceGame> BalanceGame = balanceGameService.findAll(pageNum);
-        List<BalanceGame> balanceGameList = new ArrayList<>();
-        for (BalanceGame balanceGame : BalanceGame) {
-            balanceGameList.add(balanceGame);
-        }
+        List<BalanceGame> balanceGameList = balanceGameService.balanceGameList(randomList.get(pageNum-1), pageNum);
+
         model.addAttribute("balanceGameList", balanceGameList);
 
         return "play/balance_play";
     }
 
-    @PostMapping("balanceGame")
-    public void updateCnt(@RequestBody BalanceForm balanceForm) {
-        Long id = balanceForm.getId();
-        int balanceCnt = balanceForm.getBalanceCnt();
-        balanceGameService.updateCnt(id, balanceCnt);
-    }
 
     @GetMapping("/musicGame")
     public String musicStageGame(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        Page<MusicStageGame> musicStageGame = musicGameService.findAll(pageNum);
-        List<MusicStageGame> musicStageGameList = new ArrayList<>();
-        for (MusicStageGame game : musicStageGame) {
-            musicStageGameList.add(game);
-        }
+        List<MusicStageGame> musicStageGameList = musicGameService.musicStageGames(randomList.get(pageNum-1), pageNum);
+
         model.addAttribute("musicStageGameList", musicStageGameList);
         return "play/stage_play";
     }
@@ -118,15 +101,10 @@ public class GameController {
     @GetMapping("/newWordGame")
     public String newWordGame(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 
-        Page<NewWordGame> newWordGame = newWordGameService.findAll(pageNum);
-        List<NewWordGame> newWordGameList = new ArrayList<>();
-        for (NewWordGame game : newWordGame){
-            newWordGameList.add(game);
-        }
+        List<NewWordGame> newWordGameList = newWordGameService.newWordGames(randomList.get(pageNum-1), pageNum);
+
         model.addAttribute("newWordGameList", newWordGameList);
 
         return "play/new_word_play";
     }
-
-
 }
