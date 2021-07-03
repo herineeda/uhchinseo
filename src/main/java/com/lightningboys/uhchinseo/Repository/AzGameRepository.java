@@ -15,5 +15,5 @@ public interface AzGameRepository extends JpaRepository<AZGame, Long> {
     Page<AZGame> findAll(Pageable pageable);
 
     @Query("select ag from az_game ag where ag.category in (:id)")
-    List<AZGame> findRandomQuiz(@RequestParam("id")Integer id, Pageable pageable);
+    List<AZGame> findRandomQuiz(@RequestParam("id")Integer id);
 }

@@ -15,5 +15,5 @@ import java.util.List;
 public interface NewWordGameRepository extends JpaRepository<NewWordGame, Long> {
 
     @Query("select n from new_word_game n where n.category =:id")
-   List<NewWordGame> randomQuiz (@RequestParam("id")int id, Pageable pageable);
+   List<NewWordGame> randomQuiz (@RequestParam("id")int id);
 }

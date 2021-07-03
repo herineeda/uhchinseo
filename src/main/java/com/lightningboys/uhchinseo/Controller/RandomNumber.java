@@ -13,7 +13,7 @@ public class RandomNumber {
         Random rd = new Random();
         List<Integer> randomNumber = new ArrayList<>();
         for(int i=0; i<10; i++){
-            randomNumber.add((rd.nextInt(40)+1));
+            randomNumber.add((rd.nextInt(31)+1));
         }
         return randomNumber;
     }

@@ -17,12 +17,7 @@ class GameServiceTest {
     @Autowired
     MusicGameService musicGameService;
 
-    @Test
-//    @Rollback(value = false)
-    void updateCnt(){
-        balanceGameService.updateCnt(1L, 0);
 
-    }
 
 //    @Test
 //    void updateScore(){

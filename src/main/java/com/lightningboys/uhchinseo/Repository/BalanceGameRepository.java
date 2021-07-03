@@ -16,5 +16,5 @@ import java.util.List;
 public interface BalanceGameRepository extends JpaRepository<BalanceGame, Long> {
 
     @Query("select b from Balance_Game b where b.category =:id ")
-   List<BalanceGame> findRandomQ(@RequestParam("id")int id, Pageable pageable);
+   List<BalanceGame> findRandomQ(@RequestParam("id")int id);
 }

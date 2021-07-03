@@ -19,8 +19,8 @@ import java.util.Random;
 public class AzGameService {
 
     private final AzGameRepository azGameRepository;
-    public List<AZGame> findRandomQ(Integer randomNumber, int pageNum){
+    public List<AZGame> findRandomQ(Integer randomNumber){
 
-        return azGameRepository.findRandomQuiz(randomNumber, PageRequest.of(pageNum-1, 3));
+        return azGameRepository.findRandomQuiz(randomNumber);
     }
 }

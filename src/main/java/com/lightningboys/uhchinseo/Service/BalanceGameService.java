@@ -20,7 +20,7 @@ public class BalanceGameService {
 
     private final BalanceGameRepository balanceGameRepository;
 
-    public List<BalanceGame> balanceGameList(int randomNumber, int pageNum){
-        return balanceGameRepository.findRandomQ(randomNumber, PageRequest.of(pageNum-1, 2));
+    public List<BalanceGame> balanceGameList(int randomNumber){
+        return balanceGameRepository.findRandomQ(randomNumber);
     }
 }

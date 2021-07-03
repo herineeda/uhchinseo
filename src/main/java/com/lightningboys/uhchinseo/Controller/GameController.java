@@ -72,7 +72,7 @@ public class GameController {
     @GetMapping("/azGame")
     public String azGame (Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum){
 
-        List<AZGame> azGame = azGameService.findRandomQ(randomList.get(pageNum - 1), pageNum);
+        List<AZGame> azGame = azGameService.findRandomQ(randomList.get(pageNum - 1));
         model.addAttribute("azGameList",azGame);
 
         return "play/old_test_play";
@@ -81,7 +81,7 @@ public class GameController {
 
     @GetMapping("/balanceGame")
     public String BalanceGame(Model model, @RequestParam(value = "pageNum", defaultValue ="1") int pageNum) {
-        List<BalanceGame> balanceGameList = balanceGameService.balanceGameList(randomList.get(pageNum-1), pageNum);
+        List<BalanceGame> balanceGameList = balanceGameService.balanceGameList(randomList.get(pageNum-1));
 
         model.addAttribute("balanceGameList", balanceGameList);
 
@@ -91,7 +91,7 @@ public class GameController {
 
     @GetMapping("/musicGame")
     public String musicStageGame(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        List<MusicStageGame> musicStageGameList = musicGameService.musicStageGames(randomList.get(pageNum-1), pageNum);
+        List<MusicStageGame> musicStageGameList = musicGameService.musicStageGames(randomList.get(pageNum-1));
 
         model.addAttribute("musicStageGameList", musicStageGameList);
         return "play/stage_play";
@@ -101,7 +101,7 @@ public class GameController {
     @GetMapping("/newWordGame")
     public String newWordGame(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 
-        List<NewWordGame> newWordGameList = newWordGameService.newWordGames(randomList.get(pageNum-1), pageNum);
+        List<NewWordGame> newWordGameList = newWordGameService.newWordGames(randomList.get(pageNum-1));
 
         model.addAttribute("newWordGameList", newWordGameList);
 

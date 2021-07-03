@@ -17,7 +17,7 @@ public class NewWordGameService {
 
     private final NewWordGameRepository newWordGameRepository;
 
-    public List<NewWordGame> newWordGames(int randomNUmber, int pageNum){
-        return newWordGameRepository.randomQuiz(randomNUmber, PageRequest.of(pageNum-1, 3));
+    public List<NewWordGame> newWordGames(int randomNUmber){
+        return newWordGameRepository.randomQuiz(randomNUmber);
     }
 }

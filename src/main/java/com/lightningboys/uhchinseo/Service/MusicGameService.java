@@ -19,7 +19,7 @@ public class MusicGameService {
 
     private final MusicStageGameRepository musicStageGameRepository;
 
-   public List<MusicStageGame> musicStageGames(int randomNumber, int pageNum){
-       return musicStageGameRepository.randomQ(randomNumber, PageRequest.of(pageNum-1, 3));
+   public List<MusicStageGame> musicStageGames(int randomNumber){
+       return musicStageGameRepository.randomQ(randomNumber);
    }
 }

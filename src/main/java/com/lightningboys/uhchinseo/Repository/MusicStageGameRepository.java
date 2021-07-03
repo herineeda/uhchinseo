@@ -15,6 +15,6 @@ import java.util.List;
 public interface MusicStageGameRepository extends JpaRepository <MusicStageGame, Long> {
 
     @Query("select m from Music_Stage_Game m where m.musicStageImage =:id")
-    List<MusicStageGame> randomQ(@RequestParam("id")int id, Pageable pageable);
+    List<MusicStageGame> randomQ(@RequestParam("id")int id);
 
 }
