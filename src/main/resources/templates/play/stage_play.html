@@ -111,7 +111,15 @@
             next_btn = document.getElementById('next-text');
             next_btn.addEventListener('click', function(){
                 console.log('버튼 클릭!');
-                fetch("http://localhost:8081/musicGame?pageNum=3")
+                pageNum += 1;
+                console.log(pageNum)
+                fetch(`http://localhost:8081/musicGame?pageNum=${pageNum}`)
+                    .then(res => res.json())
+                    .then(res => {
+                        if (res.success) {
+                            console.log('fetch성공');
+                        }
+                    });
             });
         </script>
     </body>
