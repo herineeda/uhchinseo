@@ -57,7 +57,7 @@
                     <div>
                         <table>
                             <tr th:each="musicStage : ${musicStageGameList}" style="display: none">
-                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'" style="display: none"></td>
+                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'+${musicStage.answer}" style="display: none"></td>
                             </tr>
                         </table>
                     </div>
@@ -105,8 +105,8 @@
 
             /*<![CDATA[*/
 
-            /*[# th:each="musicStage : ${musicStageGameList}"]
-           answerList.push(/*[[${musicStage.answer}]]*/);
+            /*[# th:each="musicStage : ${musicStageGameList}"]*/
+            answerList.push(/*[[${musicStage.answer}]]*/);
             singerList.push(/*[[${musicStage.singer}]]*/);
             musicList.push(/*[[${musicStage.music}]]*/);
             /*[/]*/
