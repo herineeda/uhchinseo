@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="어색한 친구를 소개합니다." />
@@ -57,7 +57,7 @@
                     <div>
                         <table>
                             <tr th:each="musicStage : ${musicStageGameList}" style="display: none">
-                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'" style="display: none"></td>
+                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'+${musicStage.answer}" style="display: none"></td>
                             </tr>
                         </table>
                     </div>
@@ -65,11 +65,12 @@
                 </div>
 
                 <div class="row">
-                    <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >▶ 정답 보기</div>
+                    <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >
+                        <button id="show_answer"> ▶ 정답 보기</button></div>
                     <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
                     <div><button id="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;">▶ next</button></div>
                     <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
-                    <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;">▶ result</div>
+                    <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: none;">▶ result</div>
                 </div>
             </div>
             </div>
@@ -83,7 +84,7 @@
                 </div>
             </div>
         </footer>
-            
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -95,24 +96,32 @@
             const musicList = [];
             const imgList =[];
             let pageNum = 1 ;
-            <![CDATA[
 
-            [# th:each="musicStage : ${musicStageGameList}"]
+            let f_arr =[];
+            let s_arr1;
+            let s_arr2;
+            let s_arr3;
+            let answer_arr = [];
+
+            /*<![CDATA[*/
+
+            /*[# th:each="musicStage : ${musicStageGameList}"]*/
             answerList.push(/*[[${musicStage.answer}]]*/);
             singerList.push(/*[[${musicStage.singer}]]*/);
             musicList.push(/*[[${musicStage.music}]]*/);
-            [/]
+            /*[/]*/
 
-            ]]>
+            /*]]>*/
 
-
+            //
             document.querySelector('.first').innerHTML = singerList[0]+' - '+musicList[0];
             document.querySelector('.second').innerHTML = singerList[1]+' - '+musicList[1];
             document.querySelector('.third').innerHTML = singerList[2]+' - '+ musicList[2];
 
-            console.log(answerList);
-            console.log(singerList);
-            console.log(musicList);
+            answer_arr[0] = answerList[0];
+            answer_arr[1] = answerList[1];
+            answer_arr[2] = answerList[2];
+            console.log(answer_arr);
 
 
             // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
@@ -121,25 +130,34 @@
             next_btn.addEventListener('click', function(){
                 console.log('버튼 클릭!');
                 pageNum += 1;
+
+                if (pageNum==10){
+                    document.getElementById('show_result').style.display ='block';
+                    next_btn.style.display='none';
+                }
                 console.log(pageNum)
                 fetch(`http://localhost:8081/musicGame?pageNum=${pageNum}`)
                     .then(res => res.text())
                     .then(res => {
-                        let f_arr =[];
-                        let s_arr1;
-                        let s_arr2;
-                        let s_arr3;
-
+                        console.log(res)
                         f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
                         s_arr1 = f_arr[1].split('/');
                         s_arr2 = f_arr[2].split('/');
                         s_arr3 = f_arr[3].split('/');
 
+                        // 정답 배열로 저장
+                        answer_arr[0] = s_arr1[1];
+                        answer_arr[1] = s_arr2[1];
+                        answer_arr[2] = s_arr3[1];
+
                         document.querySelector('.first').innerHTML = s_arr1[0];
                         document.querySelector('.second').innerHTML = s_arr2[0];
                         document.querySelector('.third').innerHTML = s_arr3[0];
+
+                        console.log(answer_arr);
                     });
             });
+
         </script>
     </body>
 </html>

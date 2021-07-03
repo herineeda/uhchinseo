@@ -64,6 +64,61 @@ html {
   }
 }
 
+/*닉네임 설정 button*/
+
+
+
+.flex {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.bttn {
+  color: #FFF;
+  text-decoration: none;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s ease all;
+}
+button.bttn:hover {
+  color: #FFF;
+}
+button.bttn:focus {
+  color: #FFF;
+}
+
+
+.bttn {
+  background: #7C7C7C;
+  border-bottom: 6px inset rgba(0,0,0,.5);
+  border-left: 6px inset rgba(0,0,0,.5);
+  border-right: 6px inset rgba(255,255,255,.5);
+  border-top: 6px inset rgba(255,255,255,.5);
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 1rem;
+  min-width: 150px;
+  padding: .5rem;
+  text-align:center;
+  text-transform: uppercase;
+  width: auto;
+
+}
+
+.bttn.primary {
+  background: #491670;
+
+  &:focus,
+  &:hover {
+    background: #491670;
+  }
+}
+
+
 @charset "UTF-8";
 
 /*!

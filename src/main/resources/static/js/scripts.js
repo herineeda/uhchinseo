@@ -68,7 +68,6 @@ window.addEventListener('DOMContentLoaded', event => {
     }
     else{
     }
-
     const nickname_area = document.getElementById('confirm_button');
     nickname_area.addEventListener('click', function(){
         const name = document.getElementById('user_name').value;
