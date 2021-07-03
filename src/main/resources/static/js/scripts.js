@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // 실시간 추가중
     // 닉네임 모달 창 --> 변경 함수 (문구변경 + 닉네임 설정->닉네임 수정으로 문구변경 + 모달창 닫기)
-    var nickname_area = document.getElementById('confirm_button');
+    const nickname_area = document.getElementById('confirm_button');
     nickname_area.addEventListener('click', function(){
         const name = document.getElementById('user_name').value;
         // 닉네임 로컬 스토리지에 저장
@@ -64,6 +64,9 @@ window.addEventListener('DOMContentLoaded', event => {
         // var user_name = localStorage.getItem('user_name');
         // if user_name != null (저장된 값이 있음)
 
+        // if (localStorage.getItem('user_name')!=null){
+        //
+        // }
         const btn_name=document.getElementById('btn-create-name');
         console.log(btn_name);
         btn_name.innerText ='닉네임 변경';
@@ -72,9 +75,11 @@ window.addEventListener('DOMContentLoaded', event => {
         const modal_2 = document.querySelector('.modal_texts');
         modal_1.style.display='none';
         modal_2.style.display='none';
+
+
     });
 
-    var model_on = document.getElementById("btn-create-name");
+    const model_on = document.getElementById("btn-create-name");
     model_on.addEventListener('click', function(){
         const modal_1 = document.querySelector('.modal_box');
         const modal_2 = document.querySelector('.modal_texts');
@@ -82,5 +87,24 @@ window.addEventListener('DOMContentLoaded', event => {
         modal_2.style.display='block';
     });
 
-//   $('.slick-container').click();
+    const model_off = document.getElementById("close_button");
+    model_off.addEventListener('click', function(){
+        const modal_1 = document.querySelector('.modal_box');
+        const modal_2 = document.querySelector('.modal_texts');
+        modal_1.style.display='none';
+        modal_2.style.display='none';
+    });
+
+    // 모든 html에 user_name뿌리기
+    // let user_name;
+    // user_name = localStorage.getItem('user_name');
+    // // user_name = NULL이면 false
+    // user_name ? (
+    //     price = 8,
+    //        // alert('')
+    // ) : (
+    //
+    //     alert('Enjoy the movie')
+    // );
+
 });
