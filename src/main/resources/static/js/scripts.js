@@ -53,6 +53,22 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // 실시간 추가중
     // 닉네임 모달 창 --> 변경 함수 (문구변경 + 닉네임 설정->닉네임 수정으로 문구변경 + 모달창 닫기)
+
+    const name_btn = document.getElementById('btn-create-name');
+    // 모든 html에 user_name뿌리기
+    let user_name;
+    user_name = localStorage.getItem('user_name');
+    // user_name = NULL이면 false
+    // 조건문 ? 선택문1 : 선택문2
+    if (user_name){
+        document.getElementById("nickname-area").innerText = user_name+"님! 환영합니다.";
+        const btn_name=document.getElementById('btn-create-name');
+        console.log(btn_name);
+        btn_name.innerText ='닉네임 변경';
+    }
+    else{
+    }
+
     const nickname_area = document.getElementById('confirm_button');
     nickname_area.addEventListener('click', function(){
         const name = document.getElementById('user_name').value;
@@ -95,16 +111,6 @@ window.addEventListener('DOMContentLoaded', event => {
         modal_2.style.display='none';
     });
 
-    // 모든 html에 user_name뿌리기
-    // let user_name;
-    // user_name = localStorage.getItem('user_name');
-    // // user_name = NULL이면 false
-    // user_name ? (
-    //     price = 8,
-    //        // alert('')
-    // ) : (
-    //
-    //     alert('Enjoy the movie')
-    // );
+
 
 });
