@@ -56,7 +56,7 @@
                     <div>
                         <table>
                             <tr th:each="musicStage : ${musicStageGameList}" style="display: none">
-                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'+${musicStage.answer}" style="display: none"></td>
+                                <td class="invisible-but-need" th:text="${musicStage.singer} +' - '+${musicStage.music} +'/'+${musicStage.answer} +'/'+ ${musicStage.musicStageImage}+'/'" style="display: none"></td>
                             </tr>
                         </table>
                     </div>
@@ -102,6 +102,7 @@
             let s_arr2;
             let s_arr3;
             let answer_arr = [];
+            let img;
 
             /*<![CDATA[*/
 
@@ -131,9 +132,8 @@
 
             // 이미지 불러오기
             $(document).ready(function(){
-                let img_id;
-                img_id = document.getElementById('stage_img');
-                img_id.src = '/assets/img/games_image/'+imgList[0]+'.png';
+                img = document.getElementById('stage_img');
+                img.src = '/assets/img/games_image/'+imgList[0]+'.png';
             })
 
 
@@ -170,6 +170,8 @@
                         document.querySelector('.third').innerHTML = s_arr3[0];
 
                         console.log(answer_arr);
+                        console.log(s_arr1, s_arr1[2]);
+                        img.src = '/assets/img/games_image/'+s_arr1[2]+'.png';
                     });
             });
 
