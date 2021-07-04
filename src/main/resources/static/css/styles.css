@@ -107,7 +107,7 @@ button.bttn:focus {
 }
 
 .bttn.primary {
-  background: #4C0B5F;
+  background: #E23C6C;
 
   &:focus,
   &:hover {
@@ -10274,47 +10274,100 @@ header.masthead .masthead-heading-3 {
 
 /* 전체 부분을 회색으로 하고싶은데 어떻게 해야할지.. 이 부분 논의가 필요함 */
 
-/* .modal_content{
-  background-color: white;
-  padding: 50px;
+#divPosition {
+  display : none;
   position: relative;
-  top:0px;
-  width: 30%;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-  border-radius: 8px;
+  height: 500px;
+  width: 600px;
+  margin: -250px 0px 0px -300px;
+  top: 50%;
+  left: 50%;
+  padding: 5px;
+  z-index: 2;
+  background-color: yellow;
   text-align: center;
-} */
+  font-size: 40px;
+  color: black;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#modal-innertext{
+  display : none;
+  border-bottom-left-radius: 10px;
+  z-index: 1;
+  /* position: absolute; */
+  bottom: 0px;
+  background-color: lightsteelblue;
+  width: 101.7%;
+  /* border: 0; */
+  height: 100%;
+  margin-left: -5px;
+  margin-right: -35px;
+  /* border-radius: 10px; */
+  border-bottom-right-radius: 10px;
+}
 
 .modal_text{
-  color: black;
-  margin: 5px;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 55px;
+  margin-left: 10px;
 }
 
-.modal_text.modal_input{
-  margin-bottom: 10px;
+.modal_input{
+  text-align: center;
+  margin-left: 12px;
+  width: 80%;
 }
 
-/* 모달창의 배경을 만든다 */
-.modal__background{
-/* position: fixed; */
-  top:0; left: 0; bottom: 0; right: 0;
-  background-color: #7c0000cc
+button#confirm-btn {
+  width: 65%;
+  margin: 30px;
+  margin-top: 50px;
 }
- 
-/* 모달창 영역을 꾸민다 */
-.modal__box{
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-  display : none; 
-  position: absolute;
-  z-index:1;
-  top: calc(50vh - 100px); left: calc(50vw - 200px);
-  background-color: white;
-  display: flex; justify-content: center;
-  /* align-items: center; */
-  border-radius: 10px;
-  width: 400px;
-  height: 200px;
+
+#close-btn{
+  width: 65%;
 }
+
+/*.modal_text{*/
+/*  color: black;*/
+/*  !*margin: 10px;*!*/
+/*}*/
+
+/*.modal_text.modal_input{*/
+/*  margin-bottom: 10px;*/
+/*  margin-top : 20px;*/
+/*}*/
+
+/*!* 모달창의 배경을 만든다 *!*/
+/*.modal__background{*/
+/*!* position: fixed; *!*/
+/*  top:0; left: 0; bottom: 0; right: 0;*/
+/*  background-color: #7c0000cc*/
+/*}*/
+/* */
+/*!* 모달창 영역을 꾸민다 *!*/
+/*.modal__box{*/
+/*  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);*/
+/*  display : none; */
+/*  position: absolute;*/
+/*  background-color: white;*/
+/*  display: flex; justify-content: center;*/
+/*  align-items: center;*/
+/*  border-radius: 10px;*/
+/*  width: 600px;*/
+/*  height: 400px;*/
+
+/*  margin:-300px 0px 0px -200px;*/
+
+/*}*/
+
+/*#confirm_button{*/
+/*  margin-right: 10px;*/
+/*}*/
 
 .modal{
   display:none;
@@ -10325,11 +10378,10 @@ header.masthead .masthead-heading-3 {
 }
 
 
-.modal_content{
-  position: flex !important;
-  text-align: center;
-  margin: 50px;
-} 
+/*.modal_content{*/
+/*  text-align: center;*/
+/*  !*margin: 50px;*!*/
+/*} */
 
 
 .game-start-text{
