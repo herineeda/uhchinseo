@@ -10190,6 +10190,8 @@ header.masthead .masthead-heading-3 {
 .team-member img {
   width: 100%;
   border: 0.25rem solid var(--bs-yellow);
+  z-index: 100000;
+  position: relative;
 }
 .team-member h4, .team-member .h4 {
   margin-top: 1.5rem;
@@ -10208,7 +10210,6 @@ header.masthead .masthead-heading-3 {
   font-family: 'retro-font';
   margin-bottom: 0;
 }
-
 
 /* 폴더 모양 */
 
