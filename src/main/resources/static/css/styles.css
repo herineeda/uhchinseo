@@ -135,7 +135,7 @@ button.bttn:focus {
 
 :root {
   --bs-blue: #14106d;
-  --bs-yellow: #fdce36;
+  --bs-yellow: #FFCF37;
   --bs-red: #FA6E71;
   --bs-light-blue: #123C73;
   --bs-very-light-color: #9cbcf2;
@@ -10284,7 +10284,7 @@ header.masthead .masthead-heading-3 {
   left: 50%;
   padding: 5px;
   z-index: 2;
-  background-color: yellow;
+  background-color: #FFCF37;
   text-align: center;
   font-size: 40px;
   color: black;
@@ -10311,7 +10311,7 @@ header.masthead .masthead-heading-3 {
 .modal_text{
   font-size: 30px;
   text-align: center;
-  margin-top: 60px;
+  margin-top: -10px;
   margin-bottom: 55px;
   margin-left: 10px;
 }
