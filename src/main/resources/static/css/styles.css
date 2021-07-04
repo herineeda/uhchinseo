@@ -104,7 +104,6 @@ button.bttn:focus {
   text-align:center;
   text-transform: uppercase;
   width: auto;
-
 }
 
 .bttn.primary {
@@ -112,6 +111,7 @@ button.bttn:focus {
 
   &:focus,
   &:hover {
+    cursor:pointer;
     background: #491670;
   }
 }

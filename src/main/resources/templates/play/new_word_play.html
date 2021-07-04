@@ -63,20 +63,23 @@
                             <div class="col-lg-5 mx-auto question" style="background-color: darkseagreen; margin-bottom: 3rem; padding:2rem; font-size: 6rem;">ㅈㅂㅈㅇ</div>
                         </div>
                     </div>
+						<div class="row">
+							<div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem; "><div class="answer">
+								<button class="first bttn primary">선택지1</button></div></div>
+							<div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer">
+								<button class="second bttn primary">선택지2</button></div></div>
+							<div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer">
+								<button class="third bttn primary">선택지2</button></div></div>
+						</div>
                     <div class="row">
-                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem; "><div class="answer-wrong answer">
-                            <button class="first">제발좀요</button></div></div>
-                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer-right answer">
-                            <button class="second">제발좀요</button></div></div>
-                        <div class="col-lg-4" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-size: 2rem;"><div class="answer"> <button class="third">제발좀요</button></div></div>
-                    </div>    
-                    <div class="row">
-                        <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >▶ 정답 보기</div>
-                        <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
-                        <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;">
-                            <button id="next-text">▶ next</button></div>
-                        <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
-                        <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display:none;">▶ result</div> 
+						<div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >
+							<button id="show_answer"> ▶ 정답 보기</button></div>
+						<!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
+						<div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >
+							<button id="show_next"> ▶ next </button></div>
+						<!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
+						<div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem;" >
+							<a href="/newWordGameResult" style="text-decoration:none; display:none;" id="show_result" > ▶ result </a></div>
                     </div>
                     <div>
                         <table>
