@@ -108,7 +108,7 @@ button.bttn:focus {
 }
 
 .bttn.primary {
-  background: #4C0B5F;
+  background: #E23C6C;
 
   &:focus,
   &:hover {
