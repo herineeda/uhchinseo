@@ -10311,7 +10311,7 @@ header.masthead .masthead-heading-3 {
 .modal_text{
   font-size: 30px;
   text-align: center;
-  margin-top: 60px;
+  margin-top: -10px;
   margin-bottom: 55px;
   margin-left: 10px;
 }
