@@ -20,15 +20,31 @@
 
 <body id="page-top">
 <!-- Modal 모달 창  -->
-    <div class="modal__box modal_box modal">
-        <div class="modal_content modal_texts modal">
-            <h3 class="modal_text">!닉네임을 입력하세요!</h3>
-            <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_text modal_input"/>
-            <br>
-            <button class="modal_btn" id="confirm_button">확인</button>
-            <button class="modal_btn" id="close_button" onclick="CloseModal();">닫기</button>
+
+    <div id="divPosition" class="modal">
+        &#128536; 어친소 &#128536;
+<!--        <div id="modal-title"> 어친소 </div>-->
+        <div id="modal-innertext" class="modal">
+            <span class="modal_content">
+                <h3 class="modal_text modal_content">? 닉네임을 등록/변경 하시겠습니까 ?</h3>
+                <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_input modal_content"/>
+                <br>
+                <button class="modal_btn modal_content" id="confirm-btn" >확인</button>
+                <br>
+                <button class="modal_btn modal_content" id="close-btn" onclick="CloseModal();">닫기</button>
+            </span>
         </div>
     </div>
+<!--    <div class="modal__box modal_box modal">-->
+<!--        <div class="modal_content modal_texts modal">-->
+<!--            <span style="background-color: yellow;"> 어친소 </span>-->
+<!--            <h3 class="modal_text">? 닉네임을 등록/변경 하시겠습니까 ?</h3>-->
+<!--&lt;!&ndash;            <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_text modal_input"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="modal_btn" id="confirm_button">확인</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="modal_btn" id="close_button" onclick="CloseModal();">닫기</button>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
