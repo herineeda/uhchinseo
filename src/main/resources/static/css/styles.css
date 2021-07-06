@@ -1,5 +1,12 @@
 /*메인화면 css 별 배경 */
 
+@font-face {
+  font-family: 'retro-font';
+  src: url('../assets/font/DungGeunMo.ttf') format('truetype');;
+}
+
+* { font-family: 'retro-font' !important; }
+
 html {
   height: 100%;
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
@@ -294,11 +301,6 @@ header.masthead .masthead-heading-3 {
   top: -2em;
   left: 0px;
   background-color: var(--bs-yellow);
-}
-
-@font-face {
-  font-family: 'retro-font';
-  src: url('../assets/font/DungGeunMo.ttf') format('truetype');;
 }
 
 .text-shadow{
@@ -8615,6 +8617,7 @@ progress {
     display: none !important;
   }
 }
+
 html {
   scroll-padding-top: 4.5rem;
   height : 100%;
@@ -8624,7 +8627,6 @@ body {
   position: relative;
   overflow-x: hidden;
   height : 100%;
-
 }
 
 p {
