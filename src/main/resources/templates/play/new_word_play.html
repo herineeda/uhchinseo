@@ -60,7 +60,7 @@
 
             <header class="masthead">
                 <div class="container">
-                    <div class="masthead-heading-2-score text-uppercase"><span style="color:red;">score</span> : 38 </div>
+                    <div class="masthead-heading-2-score text-uppercase score"><span style="color:red;">score</span> : 38 </div>
                     <div class="masthead-heading-1 text-uppercase">무슨 뜻인지 맞춰라!!</div>
                 </div>
             </header>
@@ -81,22 +81,22 @@
 
                         <div class="row">
                             <div class="select">
-                                <input type="radio" id="select" name="shop"><label for="select" class="nes-btn">선택지1</label>
-                                <input type="radio" id="select2" name="shop"><label for="select2"class="nes-btn">선택지2</label>
-                                <input type="radio" id="select3" name="shop"><label for="select3"class="nes-btn">선택지3</label>
+                                <input type="radio" id="select" name="shop" value="0"><label for="select" class="nes-btn" id="check_1">선택지1</label>
+                                <input type="radio" id="select2" name="shop" value="1"><label for="select2"class="nes-btn" id="check_2">선택지2</label>
+                                <input type="radio" id="select3" name="shop" value="2"><label for="select3"class="nes-btn" id="check_3">선택지3</label>
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-family:retro-font; display: flex; justify-content: center;" >
+                            <div class="next-text" id="result-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-family:retro-font; display: flex; justify-content: center;" >
                                 <button id="show_answer" class="nes-btn is-warning"style="font-family:retro-font;">정답 보기!</button></div>
                             <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
-                            <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;"  >
-                                <button id="show_next" class="nes-btn is-success"style="font-family:retro-font;"> 다음 문제! </button></div>
+                            <div class="next-text" id="next-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;"  >
+                                <button id="show_next" class="nes-btn is-success"style="font-family:retro-font; display: none;"> 다음 문제! </button></div>
                             <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
                             <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;" >
-                                <button type="button" onclick="location.href =  '/newWordGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font;">결과 확인!</button>
+                                <button type="button" onclick="location.href =  '/newWordGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button>
 
                             </div>
 
@@ -133,6 +133,8 @@
             const selectionList =[];    // 선택지
             let question;   // 문제 담는 변수
             let pageNum = 1 ;
+            let user_answer;
+            let score = 0;
 
             let f_arr =[];
             let s_arr1;
@@ -159,10 +161,14 @@
             question = document.querySelector('.question');
             question.innerHTML=questionList[0];
 
-            // 선택지 정보 입력
-            document.querySelector('.first').innerHTML = selectionList[0];
-            document.querySelector('.second').innerHTML = selectionList[1];
-            document.querySelector('.third').innerHTML = selectionList[2];
+            // 선택지 정보 입력 (radio,label값 둘다 바꿔야함)
+            // document.getElementById("select").value = selectionList[0];
+            // document.getElementById("select2").value = selectionList[1];
+            // document.getElementById("select3").value = selectionList[2];
+
+            document.getElementById('check_1').innerHTML =  selectionList[0];
+            document.getElementById('check_2').innerHTML =  selectionList[1];
+            document.getElementById('check_3').innerHTML =  selectionList[2];
 
 
             answer_arr[0] = answerList[0];
@@ -170,17 +176,67 @@
             answer_arr[2] = answerList[2];
             console.log(answer_arr);
 
+            sessionStorage.setItem('newWord_score','0');
+
+            // 정답 인덱스 저장
+            let Y_answer;
+            for (let i=0; i<2; i++){
+                if(answer_arr[i]=="Y"){
+                    Y_answer = i;
+                }
+            }
+
+            let next_btn;
+            next_btn = document.getElementById('show_next');
+
+            let check_answer_btn;
+            check_answer_btn = document.querySelector('#show_answer');
+            check_answer_btn.addEventListener('click',function () {
+                // 정답 보기 버튼 클릭
+                console.log('정답 보기 버튼 클릭!');
+                user_answer = $('input[name="shop"]:checked').val();
+                console.log(user_answer);
+
+                if (user_answer == undefined){  // 사용자가 선택지 클릭 안하고 버튼 눌렀을 떄
+                    alert('선택지를 입력하세요!')
+                    return 0;
+                }
+                else{   // 정상 입력 ( 정답체크하기 )
+                    next_btn.style.display = 'block';
+                    document.getElementById('result-div').style.display = 'none';
+
+                    // 정답 체크 후 점수 올리기
+                    if (answer_arr[user_answer]=='Y'){
+                        // score 증가 , 정답 label 색상 green으로 바꾸기
+                        console.log('정답 클릭');
+                        score += 10;
+                        document.querySelector('.score').innerHTML = score;
+                        sessionStorage.setItem('newWord_score', score);
+                        console.log(sessionStorage.getItem("newWord_score"));
+                    }
+                    else {
+                        console.log('오답 클릭');
+                    }
+                    let c_answer = 'check_'+Y_answer;
+                    // 정답 부분 색 바꿔야하는데 어딜 바꿔아하는지 질문하기
+                    // document.getElementById(c_answer).style.backgroundColor = 'green';
+                }
+
+            })
 
             // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
-            let next_btn;
-            next_btn = document.getElementById('next-text');
             next_btn.addEventListener('click', function(){
-                console.log('버튼 클릭!');
-                pageNum += 1;
+                next_btn.style.display='none';
+                document.getElementById('result-div').style.display = 'block';
 
+                console.log(pageNum+'번째 문제')
+                console.log('다음 버튼 클릭!');
+
+                pageNum += 1;
                 if (pageNum==10){
-                    document.getElementById('show_result').style.display ='block';
                     next_btn.style.display='none';
+                    document.getElementById('next-div').style.display = 'none';
+                    document.getElementById('show_result').style.display ='block';
                 }
                 console.log(pageNum)
                 fetch(`http://localhost:8081/newWordGame?pageNum=${pageNum}`)
@@ -195,25 +251,32 @@
                         s_arr3 = f_arr[3].split('/');
 
                         // 정답 배열로 저장
-                        answer_arr[0] = s_arr1[1];
-                        answer_arr[1] = s_arr2[1];
-                        answer_arr[2] = s_arr3[1];
+                        answer_arr[0] = s_arr1[2];
+                        answer_arr[1] = s_arr2[2];
+                        answer_arr[2] = s_arr3[2];
 
-                        document.querySelector('.first').innerHTML = s_arr1[1];
-                        document.querySelector('.second').innerHTML = s_arr2[1];
-                        document.querySelector('.third').innerHTML = s_arr3[1];
+                        // document.getElementById("select").value = s_arr1[1];
+                        // document.getElementById("select2").value =  s_arr2[1];
+                        // document.getElementById("select3").value =  s_arr3[1];
 
-                        console.log(answer_arr);
+                        // 정답여부 배열 저장
+                        console.log(answer_arr)
+                        for (let i=0; i<2; i++){
+                            if(answer_arr[i]=="Y"){
+                                Y_answer = i;
+                            }
+                        }
+                        // 선택지 배열
+                        document.getElementById('check_1').innerHTML =  s_arr1[1];
+                        document.getElementById('check_2').innerHTML =  s_arr2[1];
+                        document.getElementById('check_3').innerHTML =  s_arr3[1];
+
 
                         question.innerHTML=s_arr1[0];
                     });
             });
 
-            let answer_btn;
-            answer_btn = document.getElementById('show_answer');
-            answer_btn.addEventListener('click',function (){
 
-            });
 
         </script>
     </body>
