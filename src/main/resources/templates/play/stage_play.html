@@ -224,7 +224,7 @@
                 fetch(`http://localhost:8081/musicGame?pageNum=${pageNum}`)
                     .then(res => res.text())
                     .then(res => {
-                        console.log(res)
+                        // console.log(res)
                         f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
                         console.log(f_arr)
 
