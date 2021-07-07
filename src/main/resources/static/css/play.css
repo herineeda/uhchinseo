@@ -8,6 +8,7 @@ div.select{
 	vertical-align:middle;
 	 display: flex;
   justify-content: center;
+  font-family:'retro-font';
 }
 .select {
     padding: 15px 10px;
@@ -28,6 +29,7 @@ div.select{
     text-align: center;
     font-weight:bold;
     font-size:30px;
+    font-family:'retro-font';
     vertical-align:middle;
 }
 .select input[type=radio]+label{
