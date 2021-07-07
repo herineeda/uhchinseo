@@ -60,12 +60,12 @@ public class GameController {
 
     @GetMapping("/agGameResult")
     public String agResult() {
-        return "play/result";
+        return "play/result_old_test";
     }
 
     @GetMapping("/newWordGameResult")
     public String newWordResult() {
-        return "play/result";
+        return "play/result_new_word";
     }
 
 
