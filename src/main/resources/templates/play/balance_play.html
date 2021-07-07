@@ -55,7 +55,6 @@
             <div id='stars2'></div>
             <div id='stars3'></div>
 
-
             <!-- Masthead-->
             <header class="masthead">
                 <div class="container">
@@ -79,8 +78,8 @@
                         </div>
                         <div class="text-center">
                             <div class="row">
-                                <div class="next-text" style="padding-top:3rem; padding-bottom: 2.5rem;">
-                                    <button id="next-btn">▶ next</button></div>
+                                <a href="#" id="next-text" class="next-text" style=" text-align:center; padding-top:3rem; padding-bottom: 2.5rem; text-decoration:none;">
+                                    ▶ 다음 문제!</a>
                                 <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 처음부터 다시하거나 홈으로 가는 버튼 두개 동시에 보이게  -->
                                 <!-- 밸런스 게임은 결과화면이 따로 없음~~ !!-->
                                 <a href="/balance" id="restart" class="next-text text-center col-lg-6" style="padding-top:3rem; padding-bottom: 2.5rem; display:none; text-decoration:none;">▶ restart</a>
@@ -89,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-            <!-- Footer-->
+                <!-- Footer-->
                 <table>
                     <tr th:each="balanceGame : ${balanceGameList}" style="display: none">
                         <td class="invisible-but-need" th:text="${balanceGame.question} +'/'+${balanceGame.category} +'/' +${balanceGame.cnt}+'+'"> style="display: none"></td>
