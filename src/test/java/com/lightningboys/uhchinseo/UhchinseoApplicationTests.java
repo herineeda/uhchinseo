@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Arrays;
+import java.util.Collections;
 
 @SpringBootTest
 class UhchinseoApplicationTests {
@@ -35,4 +37,20 @@ class UhchinseoApplicationTests {
 		}
 	}
 
+	@Test
+	void contextLoadsds() {
+		int prices[] = {13000,88000,10000};
+		int discounts[] = {30,20};
+		int answer = 0;
+		Arrays.sort(prices);
+		Arrays.sort(discounts);
+		int j = prices.length -1 ;
+		for (int i = discounts.length; i >= 0; i--, j--) {
+			answer += prices[j] * discounts[i];
+		}
+		for (int i = j; i >= 0; i--) {
+			answer += prices[i];
+		}
+		System.out.println(answer);
+	}
 }

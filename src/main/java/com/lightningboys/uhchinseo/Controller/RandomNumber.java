@@ -14,6 +14,9 @@ public class RandomNumber {
         List<Integer> randomNumber = new ArrayList<>();
         for(int i=0; i<10; i++){
             randomNumber.add((rd.nextInt(31)+1));
+            for(int j=0; j<i;j++) {
+                if(randomNumber.get(i)==randomNumber.get(j)) {i--; break;}
+            }
         }
         return randomNumber;
     }
