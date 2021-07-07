@@ -46,7 +46,7 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-heading-2-score text-uppercase"><span style="color:red;">score</span> : 38 </div>
+            <div class="masthead-heading-2-score text-uppercase score"><span style="color:red;">score</span> : 0 점  </div>
             <div class="masthead-heading-1 text-uppercase">어떤 무대인지 맞춰라!!</div>
         </div>
     </header>
@@ -88,7 +88,7 @@
                     </div>
                     <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
                     <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;" >
-                        <button type="button" onclick="location.href =  '/newWordGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button>
+                        <button type="button" onclick="location.href =  '/musicGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@
                         // score 증가 , 정답 label 색상 green으로 바꾸기
                         console.log('정답 클릭');
                         score += 10;
-                        document.querySelector('.score').innerHTML = "score : "+ score;
+                        document.querySelector('.score').innerHTML = "score :"+ score + ' 점' ;
                         sessionStorage.setItem('stage_score', score);
                         console.log(sessionStorage.getItem("stage_score"));
                     }
