@@ -106,6 +106,7 @@
             </footer>
 
             <script src="/js/name.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         </div>
         <script th:inline="javascript">
             const questionList = [];    // 문제
@@ -128,19 +129,30 @@
             /*[/]*/
 
             /*]]>*/
-            console.log(questionList);
-            console.log(categoryList);
+            // console.log(questionList);
+            // console.log(categoryList);
+            $(document).ready(function(){
+                $(".first").on("click", function(){
+                    // 왼쪽 선택지 클릭
+                    alert("왼쪽입니다요.");
+                    setTimeout(function() {
+                        console.log('Works!');
+                    }, 5000); // 5초뒤 실행
 
+                });
+                $(".second").on("click", function(){
+                    alert("오른쪽입니다요.");
+                    setTimeout(function() {
+                        console.log('Works!');
+                    }, 5000); // 5초뒤 실행
+
+                });
+            });
 
             document.querySelector('.first').innerHTML = questionList[0];
             document.querySelector('.second').innerHTML = questionList[1];
 
-
-            // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
-            let next_btn;
-            next_btn = document.getElementById('next-btn');
-            next_btn.addEventListener('click', function(){
-                console.log('버튼 클릭!');
+            function go_next(){
                 pageNum += 1;
 
                 if (pageNum==10){
@@ -167,7 +179,42 @@
                         document.querySelector('.second').innerHTML = s_arr2[0];
 
                     });
-            });
+
+            }
+
+            // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
+            let next_btn;
+            next_btn = document.getElementById('next-btn');
+
+            // next_btn.addEventListener('click', function(){
+            //     console.log('버튼 클릭!');
+            //     pageNum += 1;
+            //
+            //     if (pageNum==10){
+            //         document.getElementById('restart').style.display ='block';
+            //         document.getElementById('home').style.display ='block';
+            //         next_btn.style.display='none';
+            //     }
+            //     console.log(pageNum)
+            //     fetch(`http://localhost:8081/balanceGame?pageNum=${pageNum}`)
+            //         .then(res => res.text())
+            //         .then(res => {
+            //             console.log(res)
+            //             f_arr = res.split("<td class=\"invisible-but-need\">")
+            //             console.log(f_arr)
+            //
+            //             s_arr1 = f_arr[1].split('/');
+            //             s_arr2 = f_arr[2].split('/');
+            //             // s_arr3 = f_arr[3].split('/');
+            //             //
+            //             // console.log('1번선택지 cnt'+s_arr1[2]);
+            //             // console.log('1번선택지 cnt'+s_arr2[2]);
+            //
+            //             document.querySelector('.first').innerHTML = s_arr1[0];
+            //             document.querySelector('.second').innerHTML = s_arr2[0];
+            //
+            //         });
+            // });
 
         </script>
     </body>
