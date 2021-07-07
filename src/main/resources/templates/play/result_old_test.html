@@ -94,10 +94,11 @@
         </div>
     </body>
 <script>
-    const stage_1 = '아는게 뭐에요? 노력하자 아자아자!'
-    const stage_2 = '아싸도 인싸도 아닌 당신은 그럴싸!! 노래는 다 알지만 춤은 섭렵하지 못했군요ㅜㅜ'
-    const stage_3 = '핵인싸! 왕년에 뮤직뱅크 좀 봤나봐요~'
-    const stage_4 = '당신은 K-POP 고인물! 덕후력 200점 만점에 200점!'
+    // 점수 높을수록 아재임, A 선택지 많이 고를 수록 아재
+    const old_test_1 = '아재가 뭐에요? 응애응애 아재력 신생아 수준!'
+    const old_test_2 = '요즘 젊은이네요~ 아재보다는 대2병을 더 조심해야할 시기!'
+    const old_test_3 = '최소 응답하라 1988세대! 혹시 부장님 아니신가요??'
+    const old_test_4 = '★완벽한 아재님★ 당신의 솔직함에 박수를!'
 
     let score_stage = parseInt(sessionStorage.getItem('stage_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
     let score_div;
@@ -107,15 +108,16 @@
     img_div = document.getElementById('img_div');
 
     console.log(score_div);
-    if (score_stage==100){
-        comment_text = stage_4;
-    } else if (score_stage>=60 && score_stage <100){
-        comment_text = stage_3;
-    } else if (score_stage>=40 && score_stage <60){
-        comment_text = stage_2;
+    if (score_az==100){
+        comment_text = old_test_4;
+    }else if (score_az>=60 && score_az <100){
+        comment_text = old_test_3;
+    }else if (score_az>=40 && score_az <60){
+        comment_text = old_test_2;
     }else{
-        comment_text = stage_1;
+        comment_text = old_test_1;
     }
+
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');
 

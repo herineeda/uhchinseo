@@ -99,7 +99,7 @@
     const new_word_3 = 'SNS 좀 할 줄 아나봐요?'
     const new_word_4 = '이 시대의 급식이!  세종대왕이 노하시겠어~ 심각한 인터넷 중독자는 아닌지?!'
 
-    let score_new = parseInt(sessionStorage.getItem('newWord_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
+    let score_az = parseInt(sessionStorage.getItem('azGame_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
     let score_div;
     let comment_div;
     let img_div;
@@ -120,7 +120,8 @@
     comment_div = document.getElementById('comment_div');
 
     score_div.innerHTML = +"! "+sessionStorage.getItem('stage_score')+"점 !";
-    comment_div.innerHTML = comment_text;
+    comment_div.innerHTML = comment_text;]
+
 
 </script>
 </html>
