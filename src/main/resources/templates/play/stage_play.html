@@ -193,7 +193,7 @@
                         // score 증가 , 정답 label 색상 green으로 바꾸기
                         console.log('정답 클릭');
                         score += 10;
-                        document.querySelector('.score').innerHTML = "score :"+ score + ' 점' ;
+                        document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
                         sessionStorage.setItem('stage_score', score);
                         console.log(sessionStorage.getItem("stage_score"));
                     }
@@ -233,9 +233,9 @@
                         s_arr3 = f_arr[3].split('/');
 
                         // 정답 배열로 저장
-                        answer_arr[0] = s_arr1[2];
-                        answer_arr[1] = s_arr2[2];
-                        answer_arr[2] = s_arr3[2];
+                        answer_arr[0] = s_arr1[1];
+                        answer_arr[1] = s_arr2[1];
+                        answer_arr[2] = s_arr3[1];
 
                         // 정답여부 배열 저장
                         console.log(answer_arr)
