@@ -97,7 +97,6 @@
                             <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
                             <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;" >
                                 <button type="button" onclick="location.href =  '/newWordGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button>
-
                             </div>
 
                             <div>
@@ -210,7 +209,7 @@
                         // score 증가 , 정답 label 색상 green으로 바꾸기
                         console.log('정답 클릭');
                         score += 10;
-                        document.querySelector('.score').innerHTML = score;
+                        document.querySelector('.score').innerHTML = "score : "+ score;
                         sessionStorage.setItem('newWord_score', score);
                         console.log(sessionStorage.getItem("newWord_score"));
                     }
