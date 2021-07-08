@@ -208,13 +208,13 @@
             // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
             next_btn.addEventListener('click', function(){
                 next_btn.style.display='none';
-                document.getElementById('result-div').style.display = 'block';
+                document.getElementById('result-div').style.display = 'flex';
 
                 console.log(pageNum+'번째 문제')
                 console.log('다음 버튼 클릭!');
 
                 pageNum += 1;
-                if (pageNum==10){
+                if (pageNum==11){
                     next_btn.style.display='none';
                     document.getElementById('next-div').style.display = 'none';
                     document.getElementById('show_result').style.display ='block';
@@ -223,19 +223,18 @@
                 fetch(`http://localhost:8081/azGame?pageNum=${pageNum}`)
                     .then(res => res.text())
                     .then(res => {
-                        console.log(res)
+                        // console.log(res)
                         f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
                         console.log(f_arr)
 
                         s_arr1 = f_arr[1].split('/');
                         s_arr2 = f_arr[2].split('/');
-                        s_arr3 = f_arr[3].split('/');
 
                         // 정답 배열로 저장
                         answer_arr[0] = s_arr1[2];
                         answer_arr[1] = s_arr2[2];
-                        answer_arr[2] = s_arr3[2];
 
+                        question.innerHTML=s_arr1[0];
                         console.log(answer_arr);
                         // 정답여부 배열 저장
                         // console.log(answer_arr)
@@ -247,9 +246,8 @@
                         // 선택지 배열
                         document.getElementById('check_1').innerHTML = s_arr1[1];
                         document.getElementById('check_2').innerHTML = s_arr2[1];
-
-
-                        question.innerHTML=s_arr1[0];
+                        console.log(s_arr1[1]);
+                        console.log(s_arr2[1]);
                     });
             });
 
