@@ -91,7 +91,7 @@
 
                             <div class="next-text" id="result-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-family:retro-font; display: flex; justify-content: center;" >
                                 <button id="show_answer" class="nes-btn is-warning"style="font-family:retro-font;">정답 보기!</button></div>
-                            <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
+                            < !-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
                             <div class="next-text" id="next-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;"  >
                                 <button id="show_next" class="nes-btn is-success"style="font-family:retro-font; display: none;"> 다음 문제! </button></div>
                             <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
@@ -181,9 +181,12 @@
             let Y_answer;
             for (let i=0; i<2; i++){
                 if(answer_arr[i]=="Y"){
-                    Y_answer = i;
+                    Y_answer = i+1;
                 }
             }
+
+            let c_answer;
+            c_answer = 'check_'+ Y_answer;
 
             let next_btn;
             next_btn = document.getElementById('show_next');
@@ -216,9 +219,7 @@
                     else {
                         console.log('오답 클릭');
                     }
-                    let c_answer = 'check_'+Y_answer;
-                    // 정답 부분 색 바꿔야하는데 어딜 바꿔아하는지 질문하기
-                    // document.getElementById(c_answer).style.backgroundColor = 'green';
+                    document.getElementById(c_answer).style.backgroundColor = "green";
                 }
 
             })
@@ -227,6 +228,14 @@
             next_btn.addEventListener('click', function(){
                 console.log(pageNum+'번째 문제')
                 console.log('다음 버튼 클릭!');
+                document.getElementById(c_answer).style.backgroundColor = 'white';
+
+                // 버튼 선택값 없애기
+                $("input:radio[name='shop']:radio[value='0']").prop('checked', false); // 해제하기
+                $("input:radio[name='shop']:radio[value='1']").prop('checked', false); // 해제하기
+                $("input:radio[name='shop']:radio[value='2']").prop('checked', false); // 해제하기
+
+
 
                 pageNum += 1;
                 if (pageNum==11){
@@ -261,11 +270,15 @@
 
                             // 정답여부 배열 저장
                             console.log(answer_arr)
+                            // 정답 인덱스 저장
+                            let Y_answer;
                             for (let i=0; i<2; i++){
                                 if(answer_arr[i]=="Y"){
-                                    Y_answer = i;
+                                    Y_answer = i+1;
                                 }
                             }
+                            c_answer = 'check_'+ Y_answer;
+
                             // 선택지 배열
                             document.getElementById('check_1').innerHTML =  s_arr1[1];
                             document.getElementById('check_2').innerHTML =  s_arr2[1];

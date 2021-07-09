@@ -165,10 +165,11 @@
 
     for (let i=0; i<2; i++){
         if(answer_arr[i]=="A"){
-            Y_answer = i;
+            Y_answer = i+1;
         }
     }
     console.log('Y_answer: '+ Y_answer);
+
     let next_btn;
     next_btn = document.getElementById('show_next');
 
@@ -184,7 +185,7 @@
         c_answer = 'check_'+ Y_answer;
         console.log(Y_answer);
         // 정답 부분 (아재력이 더 높은 부분) 의 발매년도 출력하기
-        document.getElementById('c_answer').style.backgroundColor = "green";
+        document.getElementById(c_answer).style.backgroundColor = "green";
         // document.getElementById(c_answer)
 
         if (user_answer == undefined){  // 사용자가 선택지 클릭 안하고 버튼 눌렀을 떄

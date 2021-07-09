@@ -38,12 +38,12 @@ div.select{
 
 }
 .select input[type=radio]:checked+label{
-    background-color: #FC1C61;
-    color: #fff;
+    background-color: #FC1C61 !important;
+    color: #fff !important;
 
 }
 .select input[type=radio]:hover+label{
-    background-color: #FC1C61;
-    color: #fff;
+    background-color: #FC1C61 !important;
+    color: #fff !important;
 
 }
