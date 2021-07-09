@@ -8,8 +8,9 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/css/styles.css" rel="stylesheet" />
+
         <link href="/css/play.css" rel="stylesheet" />
+		<link href="/css/styles.css" rel="stylesheet" />
         <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
         <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
@@ -60,7 +61,7 @@
 
             <header class="masthead">
                 <div class="container">
-                    <div class="masthead-heading-2-score text-uppercase score"><span style="color:red;">score</span> : 38 </div>
+                    <div class="masthead-heading-2-score text-uppercase score"><span style="color:red;">score</span> : 0 점 </div>
                     <div class="masthead-heading-1 text-uppercase">무슨 뜻인지 맞춰라!!</div>
                 </div>
             </header>
@@ -72,8 +73,8 @@
                     <div class="text-center">
                         <div class="row">
                             <div class="text-center">
-                                <div class="col-lg-5 mx-auto question" style="background-color: #FFF; color:#14106d; font-family:retro-font; margin-bottom: 3rem; padding:2rem; font-size: 6rem;">
-									<div class="nes-container is-dark with-title" style="background-color:#FFF; color:#14106d;">ㅈㅂㅈㅇ</div>
+                                <div class="col-lg-5 mx-auto question" id="question-background" style="color:#ffffff; font-family:retro-font; margin-bottom: 3rem; padding:2rem; font-size: 6rem;">
+									<div class="nes-container is-dark with-title">ㅈㅂㅈㅇ</div>
 								</div>
                             </div>
                         </div>
@@ -135,6 +136,8 @@
             let pageNum = 1 ;
             let user_answer;
             let score = 0;
+            let rand_bg_num;
+			let img_number;
 
             let f_arr =[];
             let s_arr1;
@@ -174,15 +177,27 @@
             answer_arr[0] = answerList[0];
             answer_arr[1] = answerList[1];
             answer_arr[2] = answerList[2];
-            console.log(answer_arr);
+
+            // console.log(answer_arr);
 
             sessionStorage.setItem('newWord_score','0');
 
+            // 배경 이미지 랜덤 설정
+			// 0~ 8 중에서 하나 추출
+            rand_bg_num = Math.floor(Math.random() * 9);
+            console.log(rand_bg_num);
+			img_number = 'game-background-' + rand_bg_num;
+			document.getElementById('question-background').classList.add(img_number);
+
+
             // 정답 인덱스 저장
             let Y_answer;
-            for (let i=0; i<2; i++){
-                if(answer_arr[i]=="Y"){
-                    Y_answer = i+1;
+            for (let i=0; i<3; i++){
+            	//console.log(answer_arr[i]);
+                if (answer_arr[i]=='Y'){
+                    Y_answer = Number(i+1);
+                    //console.log("뭐냐이ㅣ거"+ i);
+                    //console.log("정답"+Y_answer);
                 }
             }
 
@@ -222,6 +237,12 @@
                         console.log('오답 클릭');
                     }
                     document.getElementById(c_answer).style.backgroundColor = "green";
+
+                    if (pageNum==10){
+                    	next_btn.style.display='none';
+                    	document.getElementById('next-div').style.display = 'none';
+                    	document.getElementById('show_result').style.display ='block';
+                	}
                 }
 
             })
@@ -230,23 +251,17 @@
             next_btn.addEventListener('click', function(){
                 console.log(pageNum+'번째 문제')
                 console.log('다음 버튼 클릭!');
+                //console.log(c_answer);
                 document.getElementById(c_answer).style.backgroundColor = 'white';
 
-				console.log('1')
                 // 버튼 선택값 없애기
                 $("input:radio[name='shop']:radio[value='0']").prop('checked', false); // 해제하기
-                console.log('2')
                 $("input:radio[name='shop']:radio[value='1']").prop('checked', false); // 해제하기
-                console.log('3')
                 $("input:radio[name='shop']:radio[value='2']").prop('checked', false); // 해제하기
 
                 pageNum += 1;
-                if (pageNum==11){
-                    next_btn.style.display='none';
-                    document.getElementById('next-div').style.display = 'none';
-                    document.getElementById('show_result').style.display ='block';
-                }
-                else{
+                console.log(pageNum);
+
                     next_btn.style.display='none';
                     document.getElementById('result-div').style.display = 'block';
                     console.log(pageNum)
@@ -272,15 +287,27 @@
                             // document.getElementById("select3").value =  s_arr3[1];
 
                             // 정답여부 배열 저장
+
                             console.log(answer_arr)
                             // 정답 인덱스 저장
                             let Y_answer;
-                            for (let i=0; i<2; i++){
+                            for (let i=0; i<3; i++){
                                 if(answer_arr[i]=="Y"){
                                     Y_answer = i+1;
+                                    // console.log("뭐냐이ㅣ거"+ i);
+                    				// console.log("정답"+Y_answer);
                                 }
                             }
                             c_answer = 'check_'+ Y_answer;
+
+							// 배경 이미지 랜덤 설정
+							// 기존 배경 이미지 삭제
+							document.getElementById('question-background').classList.remove(img_number);
+
+							// 0~ 8 중에서 하나 추출
+							rand_bg_num = Math.floor(Math.random() * 9);
+							img_number = 'game-background-' + rand_bg_num;
+							document.getElementById('question-background').classList.add(img_number);
 
                             // 선택지 배열
                             document.getElementById('check_1').innerHTML =  s_arr1[1];
@@ -290,7 +317,6 @@
 
                             question.innerHTML=s_arr1[0];
                         });
-                }
 
 
             });

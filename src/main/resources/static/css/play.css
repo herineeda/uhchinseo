@@ -15,17 +15,16 @@ div.select{
     vertical-align:middle;
 }
 .select input[type=radio]{
-
     display: none;
     vertical-align:middle;
 }
 .select input[type=radio]+label{
     display: inline-block;
     cursor: pointer;
-    height: 50px;
-    width: 300px;
     border: 1px solid grey;
     line-height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
     text-align: center;
     font-weight:bold;
     font-size:30px;
@@ -47,3 +46,53 @@ div.select{
     color: #fff !important;
 
 }
+
+// 보기 이미지들 추가
+
+div.game-background-0{
+    background: rgb(242,44,111);
+    background: linear-gradient(175deg, rgba(242,44,111,1) 23%, rgba(244,179,67,1) 100%);
+}
+
+div.game-background-1{
+    background: rgb(131,58,180);
+    background: linear-gradient(197deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+div.game-background-2{
+    background: rgb(208,56,247);
+    background: linear-gradient(191deg, rgba(208,56,247,1) 0%, rgba(134,77,191,1) 33%, rgba(35,143,184,0.9864320728291317) 100%);
+}
+
+div.game-background-3{
+    background: rgb(63,94,251);
+    background: linear-gradient(200deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+div.game-background-4{
+    background: rgb(34,193,195);
+    background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,251,45,0.8547794117647058) 100%);
+}
+
+div.game-background-5{
+    background: rgb(238,174,202);
+    background: linear-gradient(352deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+div.game-background-6{
+    background: rgb(159,101,186);
+    background: linear-gradient(0deg, rgba(159,101,186,1) 0%, rgba(72,50,133,1) 100%);
+}
+
+
+div.game-background-7{
+    background: rgb(254,184,19);
+    background: linear-gradient(9deg, rgba(254,184,19,1) 0%, rgba(233,110,133,1) 100%);
+}
+
+div.game-background-8{
+    background: rgb(44,61,242);
+    background: linear-gradient(175deg, rgba(44,61,242,1) 11%, rgba(168,88,190,1) 100%);
+}
+
+
