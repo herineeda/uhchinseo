@@ -5,6 +5,7 @@ import com.lightningboys.uhchinseo.Service.AzGameService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 @SpringBootTest
+@Transactional
 class UhchinseoApplicationTests {
 
 	@Autowired
@@ -52,5 +54,10 @@ class UhchinseoApplicationTests {
 			answer += prices[i];
 		}
 		System.out.println(answer);
+	}
+
+	@Test
+	void test(){
+		azGameService.find();
 	}
 }
