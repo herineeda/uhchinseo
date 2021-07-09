@@ -278,6 +278,10 @@
     </div>
 </footer>
 <script>//swiper slide//
+sessionStorage.setItem('stage_score',0);
+sessionStorage.setItem('newWord_score',0);
+sessionStorage.setItem('azGame_score',0);
+
 new Swiper('.swiper-container', {
 
 	autoplay: { delay: 3000, },
@@ -299,7 +303,9 @@ new Swiper('.swiper-container', {
 		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
 		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
 	},
-});</script>
+});
+
+</script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

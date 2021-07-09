@@ -66,8 +66,7 @@
                     <div class="row">
                         <img class="col-lg-2" id="img_div" style="padding-bottom: 4rem;" src="/assets/img/character.png" alt="..." />
                         <div class="col-lg-9 text-center" id="comment_div" style="font-size: 2.5rem; margin-left: 2rem; margin-right:2rem; padding: 3rem; margin-top:1rem; margin-bottom:4rem;">
-                                <div>신조어에 천부적인 재능을 보이는 당신!<br>혹시 좀 놀 줄 아는 분은 아니신가요?<br>당신이 바로 유행의 선두주자~
-                            </div>
+                                <div>신조어에 천부적인 재능을 보이는 당신!<br>혹시 좀 놀 줄 아는 분은 아니신가요?<br>당신이 바로 유행의 선두주자~</div>
                         </div>
                     </div>
                     <div class="row">
@@ -99,7 +98,7 @@
     const new_word_3 = 'SNS 좀 할 줄 아나봐요?'
     const new_word_4 = '이 시대의 급식이!  세종대왕이 노하시겠어~ 심각한 인터넷 중독자는 아닌지?!'
 
-    let score_az = parseInt(sessionStorage.getItem('azGame_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
+    let score_az = parseInt(sessionStorage.getItem('newWord_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
     let score_div;
     let comment_div;
     let img_div;
@@ -119,7 +118,8 @@
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');
 
-    score_div.innerHTML = +"! "+sessionStorage.getItem('stage_score')+"점 !";
+    console.log()
+    score_div.innerHTML = sessionStorage.getItem('newWord_score')+"점 !";
     comment_div.innerHTML = comment_text;
 
     let restart_btn;
@@ -128,10 +128,10 @@
     home_btn = document.getElementById('home');
 
     restart_btn.addEventListener('click',function () {
-        sessionStorage.setItem('azGame_score',0);
+        sessionStorage.setItem('newWord_score',0);
     })
     home_btn.addEventListener('click',function () {
-        sessionStorage.setItem('azGame_score',0);
+        sessionStorage.setItem('newWord_score',0);
     })
 
 

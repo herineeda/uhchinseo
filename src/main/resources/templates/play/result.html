@@ -74,7 +74,6 @@
     let comment_text;
     img_div = document.getElementById('img_div');
 
-    console.log(score_div);
     if (score_stage==100){
         comment_text = stage_4;
     } else if (score_stage>=60 && score_stage <100){
@@ -87,7 +86,7 @@
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');
 
-    score_div.innerHTML = +"! "+sessionStorage.getItem('stage_score')+"점 !";
+    score_div.innerHTML = sessionStorage.getItem('stage_score')+"점 !";
     comment_div.innerHTML = comment_text;
 
     let restart_btn;
@@ -96,10 +95,10 @@
     home_btn = document.getElementById('home');
 
     restart_btn.addEventListener('click',function () {
-        sessionStorage.setItem('azGame_score',0);
+        sessionStorage.setItem('stage_score',0);
     })
     home_btn.addEventListener('click',function () {
-        sessionStorage.setItem('azGame_score',0);
+        sessionStorage.setItem('stage_score',0);
     })
 
 </script>

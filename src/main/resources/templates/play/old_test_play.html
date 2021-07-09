@@ -70,9 +70,7 @@
             </header>
             <div class="col-lg-5 mx-auto question" style=" margin-bottom: 3rem; padding:2rem; font-size: 3rem; word-break: keep-all; text-align:center;" >
                 <div class="nes-container is-dark with-title" style="background-color:#FFF;">
-
                     <p style="color:#14106d;">외톨이 하면 생각나는 노래는?</p>
-
                 </div>
             </div>
 
@@ -172,6 +170,7 @@
     let next_btn;
     next_btn = document.getElementById('show_next');
 
+
     let check_answer_btn;
     check_answer_btn = document.querySelector('#show_answer');
     check_answer_btn.addEventListener('click',function () {
@@ -184,8 +183,7 @@
         c_answer = 'check_'+ Y_answer;
         console.log(Y_answer);
         // 정답 부분 (아재력이 더 높은 부분) 의 발매년도 출력하기
-        document.getElementById(c_answer).style.backgroundColor = "green";
-        // document.getElementById(c_answer)
+
 
         if (user_answer == undefined){  // 사용자가 선택지 클릭 안하고 버튼 눌렀을 떄
             alert('선택지를 입력하세요!')
@@ -219,6 +217,13 @@
                 console.log('young 클릭');
             }
 
+            document.getElementById(c_answer).style.backgroundColor = "green";
+
+            if (pageNum==10){
+                next_btn.style.display='none';
+                document.getElementById('next-div').style.display = 'none';
+                document.getElementById('show_result').style.display ='block';
+            }
 
         }
 
@@ -229,6 +234,11 @@
         console.log(pageNum+'번째 문제')
         console.log('다음 버튼 클릭!');
 
+        document.getElementById(c_answer).style.backgroundColor = 'white';
+        // 버튼 선택값 없애기
+        $("input:radio[name='shop']:radio[value='0']").prop('checked', false); // 해제하기
+        $("input:radio[name='shop']:radio[value='1']").prop('checked', false); // 해제하기
+        $("input:radio[name='shop']:radio[value='2']").prop('checked', false); // 해제하기
         pageNum += 1;
         if (pageNum==11){
             next_btn.style.display='none';
@@ -259,9 +269,10 @@
                     console.log(answer_arr)
                     for (let i=0; i<2; i++){
                         if(answer_arr[i]=="A"){
-                            Y_answer = i;
+                            Y_answer = i+1;
                         }
                     }
+                    c_answer = 'check_'+ Y_answer;
                     // 선택지 배열
                     document.getElementById('check_1').innerHTML = s_arr1[1];
                     document.getElementById('check_2').innerHTML = s_arr2[1];

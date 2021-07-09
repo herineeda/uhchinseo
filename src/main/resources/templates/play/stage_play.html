@@ -149,10 +149,6 @@
             document.getElementById('check_2').innerHTML = singerList[1]+' - '+musicList[1];
             document.getElementById('check_3').innerHTML = singerList[2]+' - '+ musicList[2];
 
-            // document.querySelector('.first').innerHTML = singerList[0]+' - '+musicList[0];
-            // document.querySelector('.second').innerHTML = singerList[1]+' - '+musicList[1];
-            // document.querySelector('.third').innerHTML = singerList[2]+' - '+ musicList[2];
-
             answer_arr[0] = answerList[0];
             answer_arr[1] = answerList[1];
             answer_arr[2] = answerList[2];
@@ -160,11 +156,13 @@
 
             // 정답 인덱스 저장
             let Y_answer;
-            for (let i=0; i<2; i++){
+            for (let i=0; i<3; i++){
                 if(answer_arr[i]=="Y"){
-                    Y_answer = i;
+                    Y_answer = i+1;
                 }
             }
+            let c_answer;
+            c_answer = 'check_'+ Y_answer;
 
             img_id.src = '/assets/img/games_image/'+imgList[0]+'.png';
             console.log(imgList[0]);
@@ -200,9 +198,13 @@
                     else {
                         console.log('오답 클릭');
                     }
-                    let c_answer = 'check_'+Y_answer;
-                    // 정답 부분 색 바꿔야하는데 어딜 바꿔아하는지 질문하기
-                    // document.getElementById(c_answer).style.backgroundColor = 'green';
+                    document.getElementById(c_answer).style.backgroundColor = "green";
+
+                    if (pageNum==10){
+                        next_btn.style.display='none';
+                        document.getElementById('next-div').style.display = 'none';
+                        document.getElementById('show_result').style.display ='block';
+                    }
                 }
 
             })
@@ -213,8 +215,14 @@
 
                 console.log(pageNum+'번째 문제')
                 console.log('다음 버튼 클릭!');
+                document.getElementById(c_answer).style.backgroundColor = 'white';
 
+                // 버튼 선택값 없애기
+                $("input:radio[name='shop']:radio[value='0']").prop('checked', false); // 해제하기
+                $("input:radio[name='shop']:radio[value='1']").prop('checked', false); // 해제하기
+                $("input:radio[name='shop']:radio[value='2']").prop('checked', false); // 해제하기
                 pageNum += 1;
+
                 if (pageNum==10){
                     next_btn.style.display='none';
                     document.getElementById('next-div').style.display = 'none';
@@ -239,11 +247,12 @@
 
                         // 정답여부 배열 저장
                         console.log(answer_arr)
-                        for (let i=0; i<2; i++){
+                        for (let i=0; i<3; i++){
                             if(answer_arr[i]=="Y"){
-                                Y_answer = i;
+                                Y_answer = i+1;
                             }
                         }
+                        c_answer = 'check_'+ Y_answer;
                         // 선택지 배열
                         document.getElementById('check_1').innerHTML =  s_arr1[0];
                         document.getElementById('check_2').innerHTML =  s_arr2[0];
