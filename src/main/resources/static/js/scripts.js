@@ -5,7 +5,9 @@
 */
 //
 // Scripts
-// 
+//
+
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -15,7 +17,7 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0) { 
+        if (window.scrollY === 0) {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
@@ -23,7 +25,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     };
 
-    // Shrink the navbar 
+    // Shrink the navbar
     navbarShrink();
 
     // Shrink the navbar when page is scrolled
@@ -66,7 +68,7 @@ window.addEventListener('DOMContentLoaded', event => {
         document.getElementById("nickname-area").innerText = user_name+"님! 환영합니다.";
 
         console.log(btn_name);
-        btn_name.innerText ='닉네임 변경';
+        //btn_name.innerText ='click';
     }
     else{
     }
@@ -84,7 +86,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
         const btn_name=document.getElementById('btn-create-name');
         console.log(btn_name);
-        btn_name.innerText ='닉네임 변경';
+        //btn_name.innerText ='닉네임 변경';
 
         const modal_1 = document.querySelector('#divPosition'); // 배경
         const modal_2 = document.querySelector('#modal-innertext'); // 내용들

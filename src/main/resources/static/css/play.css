@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'retro-font';
+  src: url('DungGeunMo.ttf') format('truetype');;
+}
+
+/*play.html 들에 있는 선택지 radio css */
+div.select{
+	vertical-align:middle;
+	 display: flex;
+  justify-content: center;
+  font-family:'retro-font';
+}
+.select {
+    padding: 15px 10px;
+    vertical-align:middle;
+}
+.select input[type=radio]{
+
+    display: none;
+    vertical-align:middle;
+}
+.select input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 50px;
+    width: 300px;
+    border: 1px solid grey;
+    line-height: 40px;
+    text-align: center;
+    font-weight:bold;
+    font-size:30px;
+    font-family:'retro-font';
+    vertical-align:middle;
+}
+.select input[type=radio]+label{
+    background-color:#FFF;
+    color: #333;
+
+}
+.select input[type=radio]:checked+label{
+    background-color: #FC1C61 !important;
+    color: #fff !important;
+
+}
+.select input[type=radio]:hover+label{
+    background-color: #FC1C61 !important;
+    color: #fff !important;
+
+}
