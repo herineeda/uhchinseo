@@ -9,7 +9,13 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- 이 slider에서 필요한 js, css 를 링크걸어 사용 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js">
     </script>
@@ -18,6 +24,7 @@
 </head>
 
 <body id="page-top" style="font-family:retro-font;">
+
 <!-- Modal 모달 창  -->
 
 <div id="divPosition" class="modal">
@@ -72,7 +79,7 @@
 
 <!--star effect -->
 
-
+<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 <div id='stars'></div>
 <div id='stars2'></div>
 <div id='stars3'></div>
@@ -86,6 +93,7 @@
 </header>
 
 
+
 <!-- Portfolio Grid-->
 <section class="page-section bg-dark" id="portfolio">
     <div class="container">
@@ -95,59 +103,55 @@
         </div>
 
 
+
+        <!--slider test -->
+
         <div class="swiper-container">
-            <div class="row">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <!-- Portfolio item 1-->                        <div class="portfolio-item folder">
+                    <a class="portfolio-link folder-content " href="/balance">
+                        밸런스 게임 <br>
+                        <div style="color:red">♥ ♡ ♡</div>
+                        <div class = "folder-bottom"> ▶ C l i c k ! </div>
+                    </a>
+                </div></div>
 
 
-                <div class="col-lg-4 col-sm-6 mb-4 swiper-slide">
-                    <!-- Portfolio item 1-->
-                    <div class="portfolio-item folder">
-                        <a class="portfolio-link folder-content " href="/balance">
-                            밸런스 게임 <br>
-                            <div style="color:red">♥ ♡ ♡</div>
-                            <div class = "folder-bottom"> ▶ C l i c k ! </div>
-                        </a>
-                    </div>
-                </div>
+
+                <div class="swiper-slide">
+                    <!-- Portfolio item 2-->                        <div class="portfolio-item folder">
+                    <a class="portfolio-link folder-content"  href="/music">
+                        무대 게임 <br>
+                        <div style="color:red">♥ ♥ ♥</div>
+                        <div class = "folder-bottom"> ▶ C l i c k ! </div>
+                    </a>
+                </div></div>
 
 
-                <div class="col-lg-4 col-sm-6 mb-4 swiper-slide">
-                    <!-- Portfolio item 2-->
-                    <div class="portfolio-item folder">
-                        <a class="portfolio-link folder-content"  href="/music">
-                            무대 게임 <br>
-                            <div style="color:red">♥ ♥ ♥</div>
-                            <div class = "folder-bottom"> ▶ C l i c k ! </div>
-                        </a>
-                    </div>
-                </div>
+
+                <div class="swiper-slide">
+                    <!-- Portfolio item 3-->                        <div class="portfolio-item folder">
+                    <a class="portfolio-link folder-content " href="/newWord">
+                        신조어 게임 <br>
+                        <div style="color:red">♥ ♥ ♡</div>
+                        <div class = "folder-bottom"> ▶ C l i c k ! </div>
+                    </a>
+                </div></div>
 
 
-                <div class="col-lg-4 col-sm-6 mb-4 swiper-slide">
-                    <!-- Portfolio item 3-->
-                    <div class="portfolio-item folder">
-                        <a class="portfolio-link folder-content " href="/newWord">
-                            신조어 게임 <br>
-                            <div style="color:red">♥ ♥ ♡</div>
-                            <div class = "folder-bottom"> ▶ C l i c k ! </div>
-                        </a>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0 swiper-slide">
-                    <!-- Portfolio item 4-->
-                    <div class="portfolio-item folder">
-                        <a class="portfolio-link folder-content"  href="/ag">
-                            아재 게임 <br>
-                            <div style="color:red">♥ ♡ ♡</div>
-                            <div class = "folder-bottom"> ▶ C l i c k ! </div>
-                        </a>
-                    </div>
-                </div>
-
-
+                <div class="swiper-slide">
+                    <!-- Portfolio item 4-->                        <div class="portfolio-item folder">
+                    <a class="portfolio-link folder-content"  href="/ag">
+                        아재 게임 <br>
+                        <div style="color:red">♥ ♡ ♡</div>
+                        <div class = "folder-bottom"> ▶ C l i c k ! </div>
+                    </a>
+                </div></div>
             </div>
+
+            <!-- 페이징 -->
+            <div class="swiper-pagination"></div>
         </div>
 
 
@@ -179,7 +183,7 @@
                         <div class="details">
                             <div class="name">Daeun Kim</div>
                             <div class="job" style="color:#14106d;">Youtuber</div>
-                            <div class="mx-auto text-center" style="font-size: 1.0rem;">교차편집 전문 유튜버\
+                            <div class="mx-auto text-center" style="font-size: 1.0rem;">교차편집 전문 유튜버<br>\
                                 무엇이라도 소화할 수 있는 잡식성 식습관 보유<br>
                                 츄베릅 츄베릅 >3< !!<br>
                             </div>
@@ -198,68 +202,68 @@
                         <div class="details">
                             <div class="name">Hyelin Lee</div>
                             <div class="job" style="color:#14106d;">Hacker</div>
-                        <div class="mx-auto"  style="font-size: 1.0rem;" >이: 이색갸 <br>
-                            혜: 헤헤거리지 마<br>
-                            린: 인사안해?<br>
+                            <div class="mx-auto"  style="font-size: 1.0rem;" >이: 이색갸 <br>
+                                혜: 헤헤거리지 마<br>
+                                린: 인사안해?<br>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="assets/img/team/sy.jpg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="name">Seyoung Choi</div>
+                            <div class="job" style="color:#14106d;">구설수 전문 유튜버, <br>싱어송라이터</div>
+                            <div class="mx-auto text-center" style="font-size: 1.0rem;" >
+                                7명 구독자 유튜버 출신 <br>
+                                인생 훈수 및 참견 컨설턴트<br>
+                                무한도전 웃음분석위원회 부회장 <br>
+                                곱창의 100가지 숨겨진 과학 공동저자<br>
+                                매드몬스터 공식 10기 60억 포몬<br>
+                                개발 관련 서적 중고나라 판매 전문가
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
 
 
-            <div class="card">
-                <div class="content">
-                    <div class="img">
-                        <img src="assets/img/team/sy.jpg" alt="">
-                    </div>
-                    <div class="details">
-                        <div class="name">Seyoung Choi</div>
-                        <div class="job" style="color:#14106d;">구설수 전문 유튜버, <br>싱어송라이터</div>
-                        <div class="mx-auto text-center" style="font-size: 1.0rem;" >
-                            7명 구독자 유튜버 출신 <br>
-                            인생 훈수 및 참견 컨설턴트<br>
-                            무한도전 웃음분석위원회 부회장 <br>
-                            곱창의 100가지 숨겨진 과학 공동저자<br>
-                            매드몬스터 공식 10기 60억 포몬<br>
-                            개발 관련 서적 중고나라 판매 전문가
+            <div class="cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="assets/img/team/yy.jpg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="name">Yuni Yang</div>
+                            <div class="job" style="color:#14106d;">양꼬치마가린구이홍보실장 <br> 미래전략실 본부장</div>
+                            <div class="mx-auto text-center" style="font-size: 1.2rem;" > ~Maison De Yuni Market~ <br>
+                                개발 관련 모든 문의는 DM으로만<br>
+                                댓글x, 카톡문의x<br>
+                                <a href='https://www.youtube.com/watch?v=agbzb1MaDtc'>www.yunibutter.com</a>
+                            </div>
                         </div>
 
                     </div>
-
                 </div>
+
+
             </div>
         </div>
-
-
-
-        <div class="cards">
-            <div class="card">
-                <div class="content">
-                    <div class="img">
-                        <img src="assets/img/team/yy.jpg" alt="">
-                    </div>
-                    <div class="details">
-                        <div class="name">Yuni Yang</div>
-                        <div class="job" style="color:#14106d;">양꼬치마가린구이홍보실장 <br> 미래전략실 본부장</div>
-                        <div class="mx-auto text-center" style="font-size: 1.2rem;" > ~Maison De Yuni Market~ <br>
-                            개발 관련 모든 문의는 DM으로만<br>
-                            댓글x, 카톡문의x<br>
-                            <a href='https://www.youtube.com/watch?v=agbzb1MaDtc'>www.yunibutter.com</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
+        <div class="button">
+            <label for="one" class=" active one"></label>
+            <label for="two" class="two"></label>
         </div>
-    </div>
-    <div class="button">
-        <label for="one" class=" active one"></label>
-        <label for="two" class="two"></label>
-    </div>
     </div>
 
 </section>
@@ -272,12 +276,34 @@
         </div>
     </div>
 </footer>
+<script>//swiper slide//
+new Swiper('.swiper-container', {
 
+	autoplay: { delay: 3000, },
+
+
+
+	slidesPerView : 3, // 동시에 보여줄 슬라이드 갯수
+	spaceBetween : 30, // 슬라이드간 간격
+	slidesPerGroup : 3, // 그룹으로 묶을 수
+
+
+	loop : true, // 무한 반복
+
+	pagination : { // 페이징
+		el : '.swiper-pagination',
+		clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+	},
+	navigation : { // 네비게이션
+		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+	},
+});</script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-
+<script src="js/slider.js"></script>
 </body>
 </html>
 
