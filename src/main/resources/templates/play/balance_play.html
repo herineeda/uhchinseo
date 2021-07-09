@@ -78,8 +78,8 @@
                         </div>
                         <div class="text-center">
                             <div class="row">
-                                <a href="#" id="next-text" class="next-text" style=" text-align:center; padding-top:3rem; padding-bottom: 2.5rem; text-decoration:none;">
-                                    ▶ 다음 문제!</a>
+<!--                                <a href="#" id="next-text" class="next-text" style=" text-align:center; padding-top:3rem; padding-bottom: 2.5rem; text-decoration:none;">-->
+<!--                                    ▶ 다음 문제!</a>-->
                                 <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 처음부터 다시하거나 홈으로 가는 버튼 두개 동시에 보이게  -->
                                 <!-- 밸런스 게임은 결과화면이 따로 없음~~ !!-->
                                 <a href="/balance" id="restart" class="next-text text-center col-lg-6" style="padding-top:3rem; padding-bottom: 2.5rem; display:none; text-decoration:none;">▶ restart</a>
@@ -134,16 +134,19 @@
             $(document).ready(function(){
                 $(".first").on("click", function(){
                     // 왼쪽 선택지 클릭
-                    alert("왼쪽입니다요.");
+                    // div 영역 색상 바꾸게 설정하기
+                    console.log("왼쪽 클릭.");
                     setTimeout(function() {
-                        console.log('Works!');
+                        console.log('5초 지남!');
+                        go_next();
                     }, 5000); // 5초뒤 실행
 
                 });
                 $(".second").on("click", function(){
-                    alert("오른쪽입니다요.");
+                    console.log("오른쪽 클릭.");
                     setTimeout(function() {
-                        console.log('Works!');
+                        console.log('5초 지남!');
+                        go_next();
                     }, 5000); // 5초뒤 실행
 
                 });
@@ -155,7 +158,7 @@
             function go_next(){
                 pageNum += 1;
 
-                if (pageNum==10){
+                if (pageNum==11){
                     document.getElementById('restart').style.display ='block';
                     document.getElementById('home').style.display ='block';
                     next_btn.style.display='none';

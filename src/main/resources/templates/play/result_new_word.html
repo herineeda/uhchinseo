@@ -71,8 +71,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href='/움직일 링크' class="next-text text-center col-lg-6" style="font-size: 3rem; text-decoration: none; padding-top:1.5rem; padding-bottom: 2.5rem">▶ restart</a>
-                        <a href='/' class="next-text text-center col-lg-6" style="font-size: 3rem;  text-decoration: none; padding-top:1.5rem; padding-bottom: 2.5rem">▶ home</a>
+                        <a href='/newWord' class="next-text text-center col-lg-6" id="restart" style="font-size: 3rem; text-decoration: none; padding-top:1.5rem; padding-bottom: 2.5rem">▶ restart</a>
+                        <a href='/' class="next-text text-center col-lg-6" id="home" style="font-size: 3rem;  text-decoration: none; padding-top:1.5rem; padding-bottom: 2.5rem">▶ home</a>
                     </div> 
                 </div>
             </section>
@@ -120,7 +120,19 @@
     comment_div = document.getElementById('comment_div');
 
     score_div.innerHTML = +"! "+sessionStorage.getItem('stage_score')+"점 !";
-    comment_div.innerHTML = comment_text;]
+    comment_div.innerHTML = comment_text;
+
+    let restart_btn;
+    let home_btn;
+    restart_btn = document.getElementById('restart');
+    home_btn = document.getElementById('home');
+
+    restart_btn.addEventListener('click',function () {
+        sessionStorage.setItem('azGame_score',0);
+    })
+    home_btn.addEventListener('click',function () {
+        sessionStorage.setItem('azGame_score',0);
+    })
 
 
 </script>
