@@ -9,7 +9,7 @@
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
-
+		<link href="/css/play.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Modal 모달 창  -->
@@ -67,11 +67,11 @@
                 <div class="container">
                     <div class="text-center">
                         <div class="row" style="justify-content: center;">
-                            <div class="col-lg-5 first" style="padding-top:5rem; padding-bottom: 5rem; font-size:xxx-large;" >
+                            <div class="col-lg-5 first" id="balance-background-1" style="word-break: keep-all;  border-style: dashed; border-width: 5px; padding-top:5rem; padding-bottom: 5rem; font-size:xxx-large;" >
                                 똥맛 카레
                             </div>
                             <div class="col-lg-1" style="padding-top:5rem; padding-bottom: 5rem; font-size: 3rem; color:red; text-align:center">VS</div>
-                            <div class="col-lg-5 second" style="padding-top:5rem; padding-bottom: 5rem; font-size:xxx-large;">
+                            <div class="col-lg-5 second" id="balance-background-2" style="word-break: keep-all; border-style: dashed; border-width: 5px; padding-top:5rem; padding-bottom: 5rem; font-size:xxx-large;">
                                 카레맛 똥
                             </div>
 
@@ -113,7 +113,8 @@
             const categoryList =[]; // 카테고리 번호
             const cntList =[]; // balance count
             let pageNum = 1 ;
-
+			let rand_bg_num;
+			let img_number;
 
             let f_arr =[];
             let s_arr1;
@@ -135,19 +136,36 @@
                 $(".first").on("click", function(){
                     // 왼쪽 선택지 클릭
                     // div 영역 색상 바꾸게 설정하기
+
+                    // 배경 이미지 랜덤 설정
+					// 0~ 8 중에서 하나 추출
+					rand_bg_num = Math.floor(Math.random() * 9);
+					console.log(rand_bg_num);
+					img_number = 'game-background-' + rand_bg_num;
+					document.getElementById('balance-background-1').classList.add(img_number);
+
                     console.log("왼쪽 클릭.");
                     setTimeout(function() {
-                        console.log('5초 지남!');
+                        console.log('2초 지남!');
                         go_next();
-                    }, 5000); // 5초뒤 실행
+                    }, 2000); // 2초뒤 실행
 
                 });
                 $(".second").on("click", function(){
+                    // 오른쪽 선택지 클릭
+                    // div 영역 색상 바꾸게 설정하기
+
+                	// 배경 이미지 랜덤 설정
+					// 0~ 8 중에서 하나 추출
+					rand_bg_num = Math.floor(Math.random() * 9);
+					console.log(rand_bg_num);
+					img_number = 'game-background-' + rand_bg_num;
+					document.getElementById('balance-background-2').classList.add(img_number);
                     console.log("오른쪽 클릭.");
                     setTimeout(function() {
-                        console.log('5초 지남!');
+                        console.log('2초 지남!');
                         go_next();
-                    }, 5000); // 5초뒤 실행
+                    }, 2000); // 2초뒤 실행
 
                 });
             });
@@ -156,6 +174,12 @@
             document.querySelector('.second').innerHTML = questionList[1];
 
             function go_next(){
+				if(document.getElementById('balance-background-1').classList.contains(img_number)){
+					document.getElementById('balance-background-1').classList.remove(img_number);
+				}else{
+					document.getElementById('balance-background-2').classList.remove(img_number);
+				}
+
                 pageNum += 1;
 
                 if (pageNum==11){
