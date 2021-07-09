@@ -170,6 +170,9 @@
     let next_btn;
     next_btn = document.getElementById('show_next');
 
+    let c_answer;
+    c_answer = 'check_'+ Y_answer;
+    console.log(Y_answer);
 
     let check_answer_btn;
     check_answer_btn = document.querySelector('#show_answer');
@@ -179,12 +182,7 @@
         user_answer = $('input[name="shop"]:checked').val();
         console.log(user_answer);
 
-        let c_answer;
-        c_answer = 'check_'+ Y_answer;
-        console.log(Y_answer);
         // 정답 부분 (아재력이 더 높은 부분) 의 발매년도 출력하기
-
-
         if (user_answer == undefined){  // 사용자가 선택지 클릭 안하고 버튼 눌렀을 떄
             alert('선택지를 입력하세요!')
             return 0;
@@ -204,7 +202,7 @@
                 // score 증가 , 정답 label 색상 green으로 바꾸기
                 console.log('정답 클릭');
                 score += 20;
-                document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
+                document.querySelector('.score').innerHTML = "<p style:color='red';> score : "+ score + ' 점' ;
                 sessionStorage.setItem('azGame_score', score);
                 console.log(sessionStorage.getItem("azGame_score"));
                 console.log('old 클릭');
@@ -240,6 +238,7 @@
         $("input:radio[name='shop']:radio[value='1']").prop('checked', false); // 해제하기
         $("input:radio[name='shop']:radio[value='2']").prop('checked', false); // 해제하기
         pageNum += 1;
+
         if (pageNum==11){
             next_btn.style.display='none';
             document.getElementById('next-div').style.display = 'none';

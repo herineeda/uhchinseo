@@ -100,14 +100,14 @@
     const old_test_3 = '최소 응답하라 1988세대! 혹시 부장님 아니신가요??'
     const old_test_4 = '★완벽한 아재님★ 당신의 솔직함에 박수를!'
 
-    let score_stage = parseInt(sessionStorage.getItem('azGame_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
+    let score_az = parseInt(sessionStorage.getItem('azGame_score')); // localStorage는 문자열로만 저장되니까 숫자로 변환
     let score_div;
     let comment_div;
     let img_div;
     let comment_text;
     img_div = document.getElementById('img_div');
 
-    console.log(score_div);
+
     if (score_az==100){
         comment_text = old_test_4;
     }else if (score_az>=60 && score_az <100){
