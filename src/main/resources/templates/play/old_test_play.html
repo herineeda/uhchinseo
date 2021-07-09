@@ -1,314 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="description" content="어색한 친구를 소개합니다." />
-        <meta name="author" content="번개탄소년단" />
-        <title>어친소</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="어색한 친구를 소개합니다." />
+    <meta name="author" content="번개탄소년단" />
+    <title>어친소</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
 
-        <link href="/css/styles.css" rel="stylesheet" />
-        <link href="/css/play.css" rel="stylesheet" />
-<!--        <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />-->
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/play.css" rel="stylesheet" />
+    <!--        <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-    </head>
-    <body id="page-top">
-        <!-- Modal 모달 창  -->
-        <div class="modal__background">
-            <div class="modal__box modal_box modal">
-                <div class="modal_content modal_texts modal">
-                    <h3 class="modal_text">!닉네임을 입력하세요!</h3>
-                    <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_text modal_input"/>          
-                    <br>
-                    <button class="modal_btn" id="confirm_button">확인</button>
-                    <button class="modal_btn" id="close_button" onclick="CloseModal();">닫기</button>
+</head>
+<body id="page-top">
+<!-- Modal 모달 창  -->
+<div class="modal__background">
+    <div class="modal__box modal_box modal">
+        <div class="modal_content modal_texts modal">
+            <h3 class="modal_text">!닉네임을 입력하세요!</h3>
+            <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_text modal_input"/>
+            <br>
+            <button class="modal_btn" id="confirm_button">확인</button>
+            <button class="modal_btn" id="close_button" onclick="CloseModal();">닫기</button>
+        </div>
+    </div>
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 text-shadow">
+                    <li class="nav-item"><a class="nav-link" href="/">GAMES</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#team">ABOUT</a></li>
+                </ul>
+            </div>
+
+            <!-- 닉네임 표시 위치-->
+            <!-- css와 js로 닉네임이 없으면 -> 닉네임 설정 버튼만 활성화 / 닉네임 설정 후 -> 변경 버튼만 활성화  -->
+            <div class="text-shadow">
+                <p id="nickname-area" class='no_p'>닉네임을 설정해주세요.</p>
+                <button id="btn-create-name">닉네임 설정</button>
+            </div>
+
+        </div>
+    </nav>
+    <!--star effect -->
+
+
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+
+    <!-- Masthead-->
+
+    <section class="page-section bg-dark" style="padding-top:0rem;">
+        <div class="center" style="font-family:retro-font;">
+            <header class="masthead">
+                <div class="container">
+                    <div class="masthead-heading-2-score text-uppercase score"><span style="color:red; ">score</span> : 0 점 </div>
+                    <div class="masthead-heading-1 text-uppercase">보자마자 바로 생각나는 노래를 골라라!!</div>
+                </div>
+            </header>
+            <div class="col-lg-5 mx-auto question" style=" margin-bottom: 3rem; padding:2rem; font-size: 3rem; word-break: keep-all; text-align:center;" >
+                <div class="nes-container is-dark with-title" style="background-color:#FFF;">
+
+                    <p style="color:#14106d;">외톨이 하면 생각나는 노래는?</p>
+
                 </div>
             </div>
 
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        Menu
-                        <i class="fas fa-bars ms-1"></i>
-                    </button>
-                    <div id="navbarResponsive">
-                        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 text-shadow">
-                            <li class="nav-item"><a class="nav-link" href="/">GAMES</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/#team">ABOUT</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- 닉네임 표시 위치-->
-                    <!-- css와 js로 닉네임이 없으면 -> 닉네임 설정 버튼만 활성화 / 닉네임 설정 후 -> 변경 버튼만 활성화  -->
-                    <div class="text-shadow">  
-                        <p id="nickname-area" class='no_p'>닉네임을 설정해주세요.</p>
-                            <button id="btn-create-name">닉네임 설정</button>
-                    </div>
-
+            <div class="row">
+                <div class="select">
+                    <input type="radio" id="select" name="shop" value="0"><label for="select" class="nes-btn" id="check_1">선택지1</label>
+                    <input type="radio" id="select2" name="shop" value="1"><label for="select2"class="nes-btn" id="check_2">선택지2</label>
                 </div>
-            </nav>
-            <!--star effect -->
-
-
-            <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
-
-            <!-- Masthead-->
-
-            <section class="page-section bg-dark" style="padding-top:0rem;">
-                <div class="center" style="font-family:retro-font;">
-                    <header class="masthead">
-                        <div class="container">
-                            <div class="masthead-heading-2-score text-uppercase score"><span style="color:red; ">score</span> : 0 점 </div>
-                            <div class="masthead-heading-1 text-uppercase">보자마자 바로 생각나는 노래를 골라라!!</div>
-                        </div>
-                    </header>
-                    <div class="col-lg-5 mx-auto question" style=" margin-bottom: 3rem; padding:2rem; font-size: 3rem; word-break: keep-all; text-align:center;" >
-                        <div class="nes-container is-dark with-title" style="background-color:#FFF;">
-
-                            <p style="color:#14106d;">외톨이 하면 생각나는 노래는?</p>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="select">
-                            <input type="radio" id="select" name="shop" value="0"><label for="select" class="nes-btn" id="check_1">선택지1</label>
-                            <input type="radio" id="select2" name="shop" value="1"><label for="select2"class="nes-btn" id="check_2">선택지2</label>
-                        </div>
 
 
 
-                        <div class="row">
-                            <div class="next-text" id="result-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-family:retro-font; display: flex; justify-content: center;" >
-                                <button id="show_answer" class="nes-btn is-warning"style="font-family:retro-font;">정답 보기!</button></div>
-                            <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
-                            <div class="next-text" id="next-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;"  >
-                                <button id="show_next" class="nes-btn is-success"style="font-family:retro-font; display: none;"> 다음 문제! </button></div>
-                            <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
-                            <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;" >
-                                <button type="button" onclick="location.href =  '/agGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <table>
-                        <tr th:each="azGame : ${azGameList}" style="display: none">
-                            <td class="invisible-but-need" th:text="${azGame.question} +'/'+${azGame.selection} +'/'+${azGame.answer}+'/'" style="display: none"></td>
-                        </tr>
-                    </table>
-            </section>
-
-            <!-- Footer-->
-            <footer class="footer py-2 fixed-bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12 text-shadow" style="color: #FFF; font-size: 1.24rem;">Copyright &copy; TINGTINGTAENGTAENG</div>
+                <div class="row">
+                    <div class="next-text" id="result-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-family:retro-font; display: flex; justify-content: center;" >
+                        <button id="show_answer" class="nes-btn is-warning"style="font-family:retro-font;">정답 보기!</button></div>
+                    <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
+                    <div class="next-text" id="next-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;"  >
+                        <button id="show_next" class="nes-btn is-success"style="font-family:retro-font; display: none;"> 다음 문제! </button></div>
+                    <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
+                    <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;" >
+                        <button type="button" onclick="location.href =  '/agGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button>
                     </div>
                 </div>
-            </footer>
+            </div>
+
+
+            <table>
+                <tr th:each="azGame : ${azGameList}" style="display: none">
+                    <td class="invisible-but-need" th:text="${azGame.question} +'/'+${azGame.selection} +'/'+${azGame.answer}+'/'" style="display: none"></td>
+                </tr>
+            </table>
+    </section>
+
+    <!-- Footer-->
+    <footer class="footer py-2 fixed-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-shadow" style="color: #FFF; font-size: 1.24rem;">Copyright &copy; TINGTINGTAENGTAENG</div>
+            </div>
         </div>
+    </footer>
+</div>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/js/name.js"></script>
-        </div>
-        <script th:inline="javascript">
-            const answerList = [];  // A , B  아재력 정도 (점수화를 어떻게 할것인지?)
-            const questionList = [];    // 문제
-            const selectionList = [];   // 선택지
-            const categoryList =[]; // 카테고리 번호
-            let pageNum = 1 ;
-            let user_answer;
-            let score = 0;
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/name.js"></script>
+</div>
+<script th:inline="javascript">
+    const answerList = [];  // A , B  아재력 정도 (점수화를 어떻게 할것인지?)
+    const questionList = [];    // 문제
+    const selectionList = [];   // 선택지
+    const categoryList =[]; // 카테고리 번호
+    let pageNum = 1 ;
+    let user_answer;
+    let score = 0;
 
-            let f_arr =[];
-            let s_arr1;
-            let s_arr2;
-            let answer_arr = [];
+    let f_arr =[];
+    let s_arr1;
+    let s_arr2;
+    let answer_arr = [];
 
-            /*<![CDATA[*/
+    /*<![CDATA[*/
 
-            /*[# th:each="azGame : ${azGameList}"]*/
-            answerList.push(/*[[${azGame.answer}]]*/);
-            questionList.push(/*[[${azGame.question}]]*/);
-            selectionList.push(/*[[${azGame.selection}]]*/);
-            categoryList.push(/*[[${azGame.category}]]*/);
-            /*[/]*/
+    /*[# th:each="azGame : ${azGameList}"]*/
+    answerList.push(/*[[${azGame.answer}]]*/);
+    questionList.push(/*[[${azGame.question}]]*/);
+    selectionList.push(/*[[${azGame.selection}]]*/);
+    categoryList.push(/*[[${azGame.category}]]*/);
+    /*[/]*/
 
-            /*]]>*/
-            console.log(answerList);
-            console.log(questionList);
-            console.log(selectionList);
-            console.log(categoryList);
+    /*]]>*/
+    console.log(answerList);
+    console.log(questionList);
+    console.log(selectionList);
+    console.log(categoryList);
 
-            document.getElementById('check_1').innerHTML =  selectionList[0];
-            document.getElementById('check_2').innerHTML =  selectionList[1];
-
-
-            answer_arr[0] = answerList[0];
-            answer_arr[1] = answerList[1];
-            console.log(answer_arr);
+    document.getElementById('check_1').innerHTML =  selectionList[0];
+    document.getElementById('check_2').innerHTML =  selectionList[1];
 
 
+    answer_arr[0] = answerList[0];
+    answer_arr[1] = answerList[1];
+    console.log(answer_arr);
 
-            // 문제
-            question = document.querySelector('.question');
-            question.innerHTML=questionList[0];
 
-            let next_btn;
-            next_btn = document.getElementById('show_next');
 
-            let check_answer_btn;
-            check_answer_btn = document.querySelector('#show_answer');
-            check_answer_btn.addEventListener('click',function () {
-                // 정답 보기 버튼 클릭
-                console.log('정답 보기 버튼 클릭!');
-                user_answer = $('input[name="shop"]:checked').val();
-                console.log(user_answer);
+    // 문제
+    question = document.querySelector('.question');
+    question.innerHTML=questionList[0];
 
-                let c_answer = 'check_'+ Y_answer;
-                // 정답 부분 (아재력이 더 높은 부분) 의 발매년도 출력하기
-                document.getElementById('c_answer').style.backgroundColor = "green";
-                // document.getElementById(c_answer)
+    for (let i=0; i<2; i++){
+        if(answer_arr[i]=="A"){
+            Y_answer = i;
+        }
+    }
+    console.log('Y_answer: '+ Y_answer);
+    let next_btn;
+    next_btn = document.getElementById('show_next');
 
-                if (user_answer == undefined){  // 사용자가 선택지 클릭 안하고 버튼 눌렀을 떄
-                    alert('선택지를 입력하세요!')
-                    return 0;
-                }
-                else{
-                    // 정상 입력 ( 정답체크하기 )
-                    if (pageNum==11){
-                        next_btn.style.display = 'none';
+    let check_answer_btn;
+    check_answer_btn = document.querySelector('#show_answer');
+    check_answer_btn.addEventListener('click',function () {
+        // 정답 보기 버튼 클릭
+        console.log('정답 보기 버튼 클릭!');
+        user_answer = $('input[name="shop"]:checked').val();
+        console.log(user_answer);
+
+        let c_answer;
+        c_answer = 'check_'+ Y_answer;
+        console.log(Y_answer);
+        // 정답 부분 (아재력이 더 높은 부분) 의 발매년도 출력하기
+        document.getElementById('c_answer').style.backgroundColor = "green";
+        // document.getElementById(c_answer)
+
+        if (user_answer == undefined){  // 사용자가 선택지 클릭 안하고 버튼 눌렀을 떄
+            alert('선택지를 입력하세요!')
+            return 0;
+        }
+        else{
+            // 정상 입력 ( 정답체크하기 )
+            if (pageNum==11){
+                next_btn.style.display = 'none';
+            }
+            else{
+                next_btn.style.display = 'block';
+            }
+            document.getElementById('result-div').style.display = 'none';
+
+            // 정답 체크 후 점수 올리기
+            if (answer_arr[user_answer]=='A'){  // 아재력 up
+                // score 증가 , 정답 label 색상 green으로 바꾸기
+                console.log('정답 클릭');
+                score += 20;
+                document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
+                sessionStorage.setItem('azGame_score', score);
+                console.log(sessionStorage.getItem("azGame_score"));
+                console.log('old 클릭');
+            }
+            else {
+                score += 10;
+                document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
+                sessionStorage.setItem('azGame_score', score);
+                console.log(sessionStorage.getItem("azGame_score"));
+                console.log('young 클릭');
+            }
+
+
+        }
+
+    })
+
+    // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
+    next_btn.addEventListener('click', function(){
+        console.log(pageNum+'번째 문제')
+        console.log('다음 버튼 클릭!');
+
+        pageNum += 1;
+        if (pageNum==11){
+            next_btn.style.display='none';
+            document.getElementById('next-div').style.display = 'none';
+            document.getElementById('show_result').style.display ='block';
+        }
+        else{
+            next_btn.style.display='none';
+            document.getElementById('result-div').style.display = 'flex';
+            console.log(pageNum)
+            fetch(`http://localhost:8081/azGame?pageNum=${pageNum}`)
+                .then(res => res.text())
+                .then(res => {
+                    // console.log(res)
+                    f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
+                    console.log(f_arr)
+
+                    s_arr1 = f_arr[1].split('/');
+                    s_arr2 = f_arr[2].split('/');
+
+                    // 정답 배열로 저장
+                    answer_arr[0] = s_arr1[2];
+                    answer_arr[1] = s_arr2[2];
+
+                    question.innerHTML=s_arr1[0];
+                    console.log(answer_arr);
+                    // 정답여부 배열 저장
+                    console.log(answer_arr)
+                    for (let i=0; i<2; i++){
+                        if(answer_arr[i]=="A"){
+                            Y_answer = i;
+                        }
                     }
-                    else{
-                        next_btn.style.display = 'block';
-                    }
-                    document.getElementById('result-div').style.display = 'none';
+                    // 선택지 배열
+                    document.getElementById('check_1').innerHTML = s_arr1[1];
+                    document.getElementById('check_2').innerHTML = s_arr2[1];
+                    console.log(s_arr1[1]);
+                    console.log(s_arr2[1]);
+                });
+        }
 
-                    // 정답 체크 후 점수 올리기
-                    if (answer_arr[user_answer]=='A'){  // 아재력 up
-                        // score 증가 , 정답 label 색상 green으로 바꾸기
-                        console.log('정답 클릭');
-                        score += 20;
-                        document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
-                        sessionStorage.setItem('azGame_score', score);
-                        console.log(sessionStorage.getItem("azGame_score"));
-                        console.log('old 클릭');
-                    }
-                    else {
-                        score += 10;
-                        document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
-                        sessionStorage.setItem('azGame_score', score);
-                        console.log(sessionStorage.getItem("azGame_score"));
-                        console.log('young 클릭');
-                    }
+    });
 
 
-                }
 
-            })
-
-            // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
-            next_btn.addEventListener('click', function(){
-                console.log(pageNum+'번째 문제')
-                console.log('다음 버튼 클릭!');
-
-                pageNum += 1;
-                if (pageNum==11){
-                    next_btn.style.display='none';
-                    document.getElementById('next-div').style.display = 'none';
-                    document.getElementById('show_result').style.display ='block';
-                }
-                else{
-                    next_btn.style.display='none';
-                    document.getElementById('result-div').style.display = 'flex';
-                    console.log(pageNum)
-                    fetch(`http://localhost:8081/azGame?pageNum=${pageNum}`)
-                        .then(res => res.text())
-                        .then(res => {
-                            // console.log(res)
-                            f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
-                            console.log(f_arr)
-
-                            s_arr1 = f_arr[1].split('/');
-                            s_arr2 = f_arr[2].split('/');
-
-                            // 정답 배열로 저장
-                            answer_arr[0] = s_arr1[2];
-                            answer_arr[1] = s_arr2[2];
-
-                            question.innerHTML=s_arr1[0];
-                            console.log(answer_arr);
-                            // 정답여부 배열 저장
-                            console.log(answer_arr)
-                            for (let i=0; i<2; i++){
-                                if(answer_arr[i]=="A"){
-                                    Y_answer = i;
-                                }
-                            }
-                            // 선택지 배열
-                            document.getElementById('check_1').innerHTML = s_arr1[1];
-                            document.getElementById('check_2').innerHTML = s_arr2[1];
-                            console.log(s_arr1[1]);
-                            console.log(s_arr2[1]);
-                        });
-                }
-
-            });
-
-            //
-            // // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
-            //
-            // next_btn.addEventListener('click', function(){
-            //     console.log('버튼 클릭!');
-            //     pageNum += 1;
-            //
-            //     if (pageNum==10){
-            //         document.getElementById('show_result').style.display ='block';
-            //         next_btn.style.display='none';
-            //     }
-            //     console.log(pageNum)
-            //     fetch(`http://localhost:8081/azGame?pageNum=${pageNum}`)
-            //         .then(res => res.text())
-            //         .then(res => {
-            //             console.log(res)
-            //             f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
-            //             console.log(f_arr)
-            //
-            //             s_arr1 = f_arr[1].split('/');
-            //             s_arr2 = f_arr[2].split('/');
-            //
-            //             // 정답 배열로 저장
-            //             answer_arr[0] = s_arr1[1];
-            //             answer_arr[1] = s_arr2[1];
-            //
-            //             // document.querySelector('.first').innerHTML = s_arr1[1];
-            //             // document.querySelector('.second').innerHTML = s_arr2[1];
-            //
-            //             document.getElementById('check_1').innerHTML = s_arr1[1];
-            //             document.getElementById('check_2').innerHTML = s_arr2[1];
-            //
-            //
-            //             console.log(answer_arr);
-            //             console.log(s_arr1, s_arr1[2]);
-            //             question.innerHTML=s_arr1[0];
-            //         });
-            // });
-            //
-            // let answer_btn;
-            // answer_btn = document.getElementById('show_answer');
-            // answer_btn.addEventListener('click',function (){
-            //
-            // });
-
-        </script>
-    </body>
+</script>
+</body>
 </html>

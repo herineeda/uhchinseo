@@ -225,54 +225,58 @@
 
             // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
             next_btn.addEventListener('click', function(){
-                next_btn.style.display='none';
-                document.getElementById('result-div').style.display = 'block';
-
                 console.log(pageNum+'번째 문제')
                 console.log('다음 버튼 클릭!');
 
                 pageNum += 1;
-                if (pageNum==10){
+                if (pageNum==11){
                     next_btn.style.display='none';
                     document.getElementById('next-div').style.display = 'none';
                     document.getElementById('show_result').style.display ='block';
                 }
-                console.log(pageNum)
-                fetch(`http://localhost:8081/newWordGame?pageNum=${pageNum}`)
-                    .then(res => res.text())
-                    .then(res => {
-                        console.log(res)
-                        f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
-                        console.log(f_arr)
+                else{
+                    next_btn.style.display='none';
+                    document.getElementById('result-div').style.display = 'block';
+                    console.log(pageNum)
 
-                        s_arr1 = f_arr[1].split('/');
-                        s_arr2 = f_arr[2].split('/');
-                        s_arr3 = f_arr[3].split('/');
+                    fetch(`http://localhost:8081/newWordGame?pageNum=${pageNum}`)
+                        .then(res => res.text())
+                        .then(res => {
+                            console.log(res)
+                            f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
+                            console.log(f_arr)
 
-                        // 정답 배열로 저장
-                        answer_arr[0] = s_arr1[2];
-                        answer_arr[1] = s_arr2[2];
-                        answer_arr[2] = s_arr3[2];
+                            s_arr1 = f_arr[1].split('/');
+                            s_arr2 = f_arr[2].split('/');
+                            s_arr3 = f_arr[3].split('/');
 
-                        // document.getElementById("select").value = s_arr1[1];
-                        // document.getElementById("select2").value =  s_arr2[1];
-                        // document.getElementById("select3").value =  s_arr3[1];
+                            // 정답 배열로 저장
+                            answer_arr[0] = s_arr1[2];
+                            answer_arr[1] = s_arr2[2];
+                            answer_arr[2] = s_arr3[2];
 
-                        // 정답여부 배열 저장
-                        console.log(answer_arr)
-                        for (let i=0; i<2; i++){
-                            if(answer_arr[i]=="Y"){
-                                Y_answer = i;
+                            // document.getElementById("select").value = s_arr1[1];
+                            // document.getElementById("select2").value =  s_arr2[1];
+                            // document.getElementById("select3").value =  s_arr3[1];
+
+                            // 정답여부 배열 저장
+                            console.log(answer_arr)
+                            for (let i=0; i<2; i++){
+                                if(answer_arr[i]=="Y"){
+                                    Y_answer = i;
+                                }
                             }
-                        }
-                        // 선택지 배열
-                        document.getElementById('check_1').innerHTML =  s_arr1[1];
-                        document.getElementById('check_2').innerHTML =  s_arr2[1];
-                        document.getElementById('check_3').innerHTML =  s_arr3[1];
+                            // 선택지 배열
+                            document.getElementById('check_1').innerHTML =  s_arr1[1];
+                            document.getElementById('check_2').innerHTML =  s_arr2[1];
+                            document.getElementById('check_3').innerHTML =  s_arr3[1];
 
 
-                        question.innerHTML=s_arr1[0];
-                    });
+                            question.innerHTML=s_arr1[0];
+                        });
+                }
+
+
             });
 
 
