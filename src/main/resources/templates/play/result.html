@@ -99,12 +99,16 @@
 
     if (score_stage==100){
         comment_text = stage_4;
+        img_div.src = '/assets/img/games_result/그림12.png';
     } else if (score_stage>=60 && score_stage <100){
         comment_text = stage_3;
+        img_div.src = '/assets/img/games_result/그림6.png';
     } else if (score_stage>=40 && score_stage <60){
         comment_text = stage_2;
+        img_div.src = '/assets/img/games_result/그림9.png';
     }else{
         comment_text = stage_1;
+        img_div.src = '/assets/img/games_result/그림17png';
     }
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');

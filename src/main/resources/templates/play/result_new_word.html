@@ -105,15 +105,19 @@
     let comment_text;
     img_div = document.getElementById('img_div');
 
-    console.log(score_div);
+    console.log(score_new);
     if (score_new==100){
         comment_text = new_word_4;
+        img_div.src = '/assets/img/games_result/그림10.png';
     } else if (score_new>=60 && score_new <100){
         comment_text = new_word_3;
+        img_div.src = '/assets/img/games_result/그림11.png';
     } else if (score_new>=40 && score_new <60){
         comment_text = new_word_2;
+        img_div.src = '/assets/img/games_result/그림18.png';
     }else{
         comment_text = new_word_1;
+        img_div.src = '/assets/img/games_result/그림8.png';
     }
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');
