@@ -262,61 +262,61 @@
                 pageNum += 1;
                 console.log(pageNum);
 
-                    next_btn.style.display='none';
-                    document.getElementById('result-div').style.display = 'block';
-                    console.log(pageNum)
+                next_btn.style.display='none';
+                document.getElementById('result-div').style.display = 'block';
+                console.log(pageNum)
 
-                    fetch(`http://localhost:8081/newWordGame?pageNum=${pageNum}`)
-                        .then(res => res.text())
-                        .then(res => {
-                            console.log(res)
-                            f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
-                            console.log(f_arr)
+                fetch(`http://localhost:8081/newWordGame?pageNum=${pageNum}`)
+                    .then(res => res.text())
+                    .then(res => {
+                        console.log(res)
+                        f_arr = res.split("<td class=\"invisible-but-need\" style=\"display: none\">")
+                        console.log(f_arr)
 
-                            s_arr1 = f_arr[1].split('/');
-                            s_arr2 = f_arr[2].split('/');
-                            s_arr3 = f_arr[3].split('/');
+                        s_arr1 = f_arr[1].split('/');
+                        s_arr2 = f_arr[2].split('/');
+                        s_arr3 = f_arr[3].split('/');
 
-                            // 정답 배열로 저장
-                            answer_arr[0] = s_arr1[2];
-                            answer_arr[1] = s_arr2[2];
-                            answer_arr[2] = s_arr3[2];
+                        // 정답 배열로 저장
+                        answer_arr[0] = s_arr1[2];
+                        answer_arr[1] = s_arr2[2];
+                        answer_arr[2] = s_arr3[2];
 
-                            // document.getElementById("select").value = s_arr1[1];
-                            // document.getElementById("select2").value =  s_arr2[1];
-                            // document.getElementById("select3").value =  s_arr3[1];
+                        // document.getElementById("select").value = s_arr1[1];
+                        // document.getElementById("select2").value =  s_arr2[1];
+                        // document.getElementById("select3").value =  s_arr3[1];
 
-                            // 정답여부 배열 저장
+                        // 정답여부 배열 저장
 
-                            console.log(answer_arr)
-                            // 정답 인덱스 저장
-                            let Y_answer;
-                            for (let i=0; i<3; i++){
-                                if(answer_arr[i]=="Y"){
-                                    Y_answer = i+1;
-                                    // console.log("뭐냐이ㅣ거"+ i);
-                    				// console.log("정답"+Y_answer);
-                                }
+                        console.log(answer_arr)
+                        // 정답 인덱스 저장
+                        let Y_answer;
+                        for (let i=0; i<3; i++){
+                            if(answer_arr[i]=="Y"){
+                                Y_answer = i+1;
+                                // console.log("뭐냐이ㅣ거"+ i);
+                                // console.log("정답"+Y_answer);
                             }
-                            c_answer = 'check_'+ Y_answer;
+                        }
+                        c_answer = 'check_'+ Y_answer;
 
-							// 배경 이미지 랜덤 설정
-							// 기존 배경 이미지 삭제
-							document.getElementById('question-background').classList.remove(img_number);
+                        // 배경 이미지 랜덤 설정
+                        // 기존 배경 이미지 삭제
+                        document.getElementById('question-background').classList.remove(img_number);
 
-							// 0~ 8 중에서 하나 추출
-							rand_bg_num = Math.floor(Math.random() * 9);
-							img_number = 'game-background-' + rand_bg_num;
-							document.getElementById('question-background').classList.add(img_number);
+                        // 0~ 8 중에서 하나 추출
+                        rand_bg_num = Math.floor(Math.random() * 9);
+                        img_number = 'game-background-' + rand_bg_num;
+                        document.getElementById('question-background').classList.add(img_number);
 
-                            // 선택지 배열
-                            document.getElementById('check_1').innerHTML =  s_arr1[1];
-                            document.getElementById('check_2').innerHTML =  s_arr2[1];
-                            document.getElementById('check_3').innerHTML =  s_arr3[1];
+                        // 선택지 배열
+                        document.getElementById('check_1').innerHTML =  s_arr1[1];
+                        document.getElementById('check_2').innerHTML =  s_arr2[1];
+                        document.getElementById('check_3').innerHTML =  s_arr3[1];
 
 
-                            question.innerHTML=s_arr1[0];
-                        });
+                        question.innerHTML=s_arr1[0];
+                    });
 
 
             });
