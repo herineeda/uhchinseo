@@ -9,7 +9,6 @@ let ran_answer = [] // 선택지에 맞게 정답 랜덤 정렬된 것
 let rand_idx
 
 function shuffleRandom(sel_arr, ans_arr){
-
     // 선택지 2개 짜리는 i<3 대신 i<2로 수정~!
     for(let i=0; i<3; i++){
         // console.log("배열 현재 길이는??",selection_origin.length)

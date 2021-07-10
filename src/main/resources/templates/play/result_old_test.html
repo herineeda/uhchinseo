@@ -43,7 +43,6 @@
                     <!-- css와 js로 닉네임이 없으면 -> 닉네임 설정 버튼만 활성화 / 닉네임 설정 후 -> 변경 버튼만 활성화  -->
                     <div class="text-shadow">  
                         <p id="nickname-area" class='no_p'>닉네임을 설정해주세요.</p>
-                            <button id="btn-create-name">닉네임 설정</button>
                     </div>
 
                 </div>
@@ -91,6 +90,7 @@
             <!-- Core theme JS-->
             <script src="/js/name.js"></script>
 <!--            <script src="/js/result_comment.js"></script>-->
+            <script src="/js/scripts.js"></script>
         </div>
     </body>
 <script>
@@ -105,24 +105,36 @@
     let comment_div;
     let img_div;
     let comment_text;
+
     img_div = document.getElementById('img_div');
 
 
     if (score_az==100){
         comment_text = old_test_4;
+        img_div.src = '/assets/img/games_result/그림17.png';
     }else if (score_az>=60 && score_az <100){
         comment_text = old_test_3;
+        img_div.src = '/assets/img/games_result/그림18.png';
     }else if (score_az>=40 && score_az <60){
         comment_text = old_test_2;
+        img_div.src = '/assets/img/games_result/그림11.png';
     }else{
         comment_text = old_test_1;
+        img_div.src = '/assets/img/games_result/그림15.png';
+        console.log('진입');
     }
+
 
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');
 
     score_div.innerHTML = sessionStorage.getItem('azGame_score')+"점 !";
     comment_div.innerHTML = comment_text;
+
+    let restart_btn;
+    let home_btn;
+    restart_btn = document.getElementById('restart');
+    home_btn = document.getElementById('home');
 
     restart_btn.addEventListener('click',function () {
         sessionStorage.setItem('azGame_score',0);

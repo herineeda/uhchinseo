@@ -196,17 +196,13 @@
             if (answer_arr[user_answer]=='A'){  // 아재력 up
                 // score 증가 , 정답 label 색상 green으로 바꾸기
                 console.log('정답 클릭');
-                score += 20;
+                score += 10;
                 document.querySelector('.score').innerHTML = "score : "+ score + ' 점' ;
                 sessionStorage.setItem('azGame_score', score);
                 console.log(sessionStorage.getItem("azGame_score"));
                 console.log('old 클릭');
             }
             else {
-                score += 10;
-                document.querySelector('.score').innerHTML = " score : "+ score + ' 점' ;
-                sessionStorage.setItem('azGame_score', score);
-                console.log(sessionStorage.getItem("azGame_score"));
                 console.log('young 클릭');
             }
 
