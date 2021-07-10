@@ -20,22 +20,6 @@ img.col-lg-2 {
 	justify-content:center; /* 좌우 기준 중앙정렬 */
 }
 
-.swiper-pagination-bullet{
-width:12px;
-height:12px;
-background: #9acd32;
-opacity:0.5;
-}
-
-.swiper-pagination-bullet-active{
-
-    width: 20px;
-    height: 20px;
-    background: #ffd700;
-    opacity: 1;
-}
-
-
 /*닉네임 설정 button*/
 
 .flex {
