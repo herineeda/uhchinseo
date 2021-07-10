@@ -25,5 +25,8 @@ public class AZGame {
     @Column(name = "az_category")
     private int category;
 
+    @Column(name = "az_year")
+    private String year;
+
 }
 
