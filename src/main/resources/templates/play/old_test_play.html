@@ -68,12 +68,13 @@
                     <div class="masthead-heading-1 text-uppercase">보자마자 바로 생각나는 노래를 골라라!!</div>
                 </div>
             </header>
-            <div class="col-lg-5 mx-auto question" style=" margin-bottom: 3rem; padding:2rem; font-size: 3rem; word-break: keep-all; text-align:center;" >
-                <div class="nes-container is-dark with-title" style="background-color:#FFF;">
-                    <p style="color:#14106d;">외톨이 하면 생각나는 노래는?</p>
+            <div class="row">
+            <div class="col-lg-5 mx-auto question" id="az-test-background" style="color:#ffffff; margin-bottom: 3rem; padding:2rem; font-size: 3rem; word-break: keep-all; text-align:center;" >
+                <div class="nes-container is-dark with-title">
+                    외톨이 하면 생각나는 노래는?
                 </div>
             </div>
-
+            </div>
             <div class="row">
                 <div class="select">
                     <input type="radio" id="select" name="shop" value="0"><label for="select" class="nes-btn" id="check_1">선택지1</label>
@@ -84,10 +85,10 @@
 
                 <div class="row">
                     <div class="next-text" id="result-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; font-family:retro-font; display: flex; justify-content: center;" >
-                        <button id="show_answer" class="nes-btn is-warning"style="font-family:retro-font;">정답 보기!</button></div>
+                        <button id="show_answer" class="nes-btn is-warning" style="font-family:retro-font;">정답 보기!</button></div>
                     <!-- 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 다음으로 넘어가는 버튼 보이게 하기 -->
                     <div class="next-text" id="next-div" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;"  >
-                        <button id="show_next" class="nes-btn is-success"style="font-family:retro-font; display: none;"> 다음 문제! </button></div>
+                        <button id="show_next" class="nes-btn is-success" style="font-family:retro-font; display: none;"> 다음 문제! </button></div>
                     <!-- 지금 문제가 마지막 문제인 경우 정답보기 버튼 클릭하면 정답보기 버튼 없어지고 결과 보는 버튼 보이게 하기 -->
                     <div class="next-text" style="padding-top:2.5rem; padding-bottom: 2.5rem; display: flex; justify-content: center;" >
                         <button type="button" onclick="location.href =  '/agGameResult';" id = show_result class ="nes-btn is-error" style="font-family:retro-font; display: none;">결과 확인!</button></div>
@@ -159,6 +160,13 @@
     // 문제
     question = document.querySelector('.question');
     question.innerHTML=questionList[0];
+
+    // 배경 이미지 랜덤 설정
+	// 0~ 8 중에서 하나 추출
+    rand_bg_num = Math.floor(Math.random() * 9);
+	img_number = 'game-background-' + rand_bg_num;
+	console.log(img_number);
+	document.getElementById('az-test-background').classList.add(img_number);
 
     for (let i=0; i<2; i++){
         if(answer_arr[i]=="A"){
@@ -257,6 +265,18 @@
                     }
                 }
                 c_answer = 'check_'+ Y_answer;
+
+                // 배경 이미지 랜덤 설정
+				// 기존 배경 이미지 삭제
+				document.getElementById('az-test-background').classList.remove(img_number);
+
+				// 0~ 8 중에서 하나 추출
+				rand_bg_num = Math.floor(Math.random() * 9);
+				console.log(rand_bg_num);
+				img_number = 'game-background-' + rand_bg_num;
+				console.log(img_number);
+				document.getElementById('az-test-background').classList.add(img_number);
+
                 // 선택지 배열
                 document.getElementById('check_1').innerHTML = s_arr1[1];
                 document.getElementById('check_2').innerHTML = s_arr2[1];
