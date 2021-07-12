@@ -19,7 +19,24 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js">
     </script>
+	<script>
+			function showPopup(hasFilter) {
+			const popup = document.querySelector('#popup');
 
+			  if (hasFilter) {
+				popup.classList.add('has-filter');
+			  } else {
+				popup.classList.remove('has-filter');
+			  }
+
+			  popup.classList.remove('hide');
+			}
+
+			function closePopup() {
+				const popup = document.querySelector('#popup');
+			  	popup.classList.add('hide');
+			}
+		</script>
 
     <style>
 <!-- 슬라이더 버튼 css -->
@@ -34,22 +51,17 @@
 <body id="page-top" style="font-family:retro-font;">
 
 <!-- Modal 모달 창  -->
-
-<div id="divPosition" class="modal">
+<div id="popup" class="hide">
+	<!-- 여기 수정해라 @다은이 -->
+<div class="content">
     &#128536; 어친소 &#128536;
-    <!--        <div id="modal-title"> 어친소 </div>-->
-    <div id="modal-innertext" class="modal">
-            <span class="modal_content">
-                <br>
-                <h3 class="modal_text">? 닉네임을 등록/변경 하시겠습니까 ?</h3>
-                <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_input modal_content"/>
-                <br>
-                <button class="modal_btn modal_content" id="confirm-btn" >확인</button>
-                <br>
-                <button class="modal_btn modal_content" id="close-btn" onclick="CloseModal();">닫기</button>
-            </span>
-    </div>
-</div>
+		<h3 class="modal_text">? 닉네임을 등록/변경 하시겠습니까 ?</h3>
+        <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_input modal_content"/>
+		<br>
+        <button id="confirm-btn" >확인</button>
+		<br>
+		<button id="close-btn" onclick="closePopup();">닫기</button>
+</div></div>
 <!--    <div class="modal__box modal_box modal">-->
 <!--        <div class="modal_content modal_texts modal">-->
 <!--            <span style="background-color: yellow;"> 어친소 </span>-->
@@ -77,10 +89,10 @@
 
         <!-- 닉네임 표시 위치-->
         <!-- css와 js로 닉네임이 없으면 -> 닉네임 설정 버튼만 활성화 / 닉네임 설정 후 -> 변경 버튼만 활성화  -->
+		<!-- 버튼 스타일 니들이 빼.. -->
         <div class="text-shadow">
-            <a href="" id ="btn-create-name"><img src="assets/img/logo.png"style="width:40px;"></a>
+            <button id="btn-create-name" onclick="showPopup(false)"><img src="assets/img/logo.png" style="width:40px;"/></button>
             <p id="nickname-area" class='no_p' style="font-family:retro-font; color:#FFF;">닉네임을 설정해주세요.</p>
-
         </div>
     </div>
 </nav>
