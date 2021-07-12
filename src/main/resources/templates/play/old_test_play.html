@@ -98,7 +98,7 @@
 
             <table>
                 <tr th:each="azGame : ${azGameList}" style="display: none">
-                    <td class="invisible-but-need" th:text="${azGame.question} +'/'+${azGame.selection} +'/'+${azGame.answer}+'/'" style="display: none"></td>
+                    <td class="invisible-but-need" th:text="${azGame.question} +'/'+${azGame.selection} +'/'+${azGame.answer}+'/'+${azGame.year}+'/'" style="display: none"></td>
                 </tr>
             </table>
     </section>
@@ -122,7 +122,7 @@
     const answerList = [];  // A , B  아재력 정도 (점수화를 어떻게 할것인지?)
     const questionList = [];    // 문제
     const selectionList = [];   // 선택지
-    const categoryList =[]; // 카테고리 번호
+    const yearList =[]; // 발매년도
     let pageNum = 1 ;
     let user_answer;
     let score = 0;
@@ -130,7 +130,10 @@
     let f_arr =[];
     let s_arr1;
     let s_arr2;
+    let s_arr3;
     let answer_arr = [];
+    let year_az;
+    let year_young;
 
     /*<![CDATA[*/
 
@@ -138,14 +141,14 @@
     answerList.push(/*[[${azGame.answer}]]*/);
     questionList.push(/*[[${azGame.question}]]*/);
     selectionList.push(/*[[${azGame.selection}]]*/);
-    categoryList.push(/*[[${azGame.category}]]*/);
+    yearList.push(/*[[${azGame.year}]]*/);
     /*[/]*/
 
     /*]]>*/
     console.log(answerList);
     console.log(questionList);
     console.log(selectionList);
-    console.log(categoryList);
+    console.log(yearList);
 
     document.getElementById('check_1').innerHTML =  selectionList[0];
     document.getElementById('check_2').innerHTML =  selectionList[1];
@@ -155,8 +158,10 @@
     answer_arr[1] = answerList[1];
     console.log(answer_arr);
 
+    year_az = yearList[0];
+    year_young = yearList[1];
 
-
+    console.log(year_az,year_young);
     // 문제
     question = document.querySelector('.question');
     question.innerHTML=questionList[0];
@@ -213,8 +218,10 @@
             else {
                 console.log('young 클릭');
             }
-
-            document.getElementById(c_answer).style.backgroundColor = "green";
+            //
+            // document.getElementById(c_answer).style.backgroundColor = "green";
+            document.getElementById('check_1').innerHTML = year_az;
+            document.getElementById('check_2').innerHTML = year_young;
 
             if (pageNum==10){
                 next_btn.style.display='none';
@@ -280,8 +287,11 @@
                 // 선택지 배열
                 document.getElementById('check_1').innerHTML = s_arr1[1];
                 document.getElementById('check_2').innerHTML = s_arr2[1];
-                console.log(s_arr1[1]);
-                console.log(s_arr2[1]);
+
+                console.log(s_arr1[3],s_arr2[3]);
+                year_az = s_arr1[3];
+                year_young = s_arr2[3];
+
             });
 
 
