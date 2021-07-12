@@ -7,6 +7,11 @@ img.col-lg-2 {
   margin-top: -50px;
 }
 
+@font-face {
+  font-family: 'retro-font';
+  src: url('../assets/font/DungGeunMo.ttf') format('truetype');;
+}
+
 
 /*swiper slider*/
 .swiper-container {
@@ -10944,11 +10949,6 @@ header.masthead .masthead-heading-3 {
   background-color: var(--bs-yellow);
 }
 
-@font-face {
-  font-family: 'retro-font';
-  src: url('../assets/font/DungGeunMo.ttf') format('truetype');;
-}
-
 .text-shadow{
   font-size: 1.5rem;
   text-shadow: 2px 2px 4px lightslategray;
@@ -11157,4 +11157,22 @@ button#confirm-btn {
   background: #fff;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+
+
+#info-block section {
+    border: 2px solid black;
+}
+
+.file-marker > div {
+    padding: 0 3px;
+    height: 100px;
+    margin-top: -0.8em;
+
+}
+.box-title {
+    background: white none repeat scroll 0 0;
+    display: inline-block;
+    padding: 0 2px;
+    margin-left: 8em;
 }
