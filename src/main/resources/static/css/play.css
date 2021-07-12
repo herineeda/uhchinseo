@@ -47,8 +47,6 @@ div.select{
 
 }
 
-// 보기 이미지들 추가
-
 div.game-background-0{
     background: rgb(242,44,111);
     background: linear-gradient(175deg, rgba(242,44,111,1) 23%, rgba(244,179,67,1) 100%);

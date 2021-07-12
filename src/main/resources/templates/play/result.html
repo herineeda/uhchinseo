@@ -21,18 +21,17 @@
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
-                <div id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 text-shadow">
-                        <li class="nav-item"><a class="nav-link" href="/">GAMES</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/#team">ABOUT</a></li>
-                    </ul>
-                </div>
+				<div id="navbarResponsive">
+					<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 text-shadow">
+						<li class="nav-item"><a class="nav-link" href="/#portfolio" style="text-decoration: none;">GAMES</a></li>
+						<li class="nav-item"><a class="nav-link" href="/#team" style="text-decoration:none;">ABOUT</a></li>
+					</ul>
+				</div>
 
                 <!-- 닉네임 표시 위치-->
                 <!-- css와 js로 닉네임이 없으면 -> 닉네임 설정 버튼만 활성화 / 닉네임 설정 후 -> 변경 버튼만 활성화  -->
                 <div class="text-shadow">
-                    <p id="nickname-area" class='no_p'>닉네임을 설정해주세요.</p>
-<!--                    <button id="btn-create-name">닉네임 설정</button>-->
+					<p id="nickname-area" class='no_p' style="font-family:retro-font; color:#FFF;">닉네임을 설정해주세요.</p>
                 </div>
 
             </div>
@@ -108,7 +107,7 @@
         img_div.src = '/assets/img/games_result/그림9.png';
     }else{
         comment_text = stage_1;
-        img_div.src = '/assets/img/games_result/그림17png';
+        img_div.src = '/assets/img/games_result/그림17.png';
     }
     score_div = document.getElementById('score_div');
     comment_div = document.getElementById('comment_div');
