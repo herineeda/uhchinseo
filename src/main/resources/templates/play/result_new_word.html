@@ -137,6 +137,17 @@
         sessionStorage.setItem('newWord_score',0);
     })
 
+    let user_name;
+    user_name = localStorage.getItem('user_name');
+    console.log('user_name : '+user_name);
+    // user_name = NULL이면 false
+    // 조건문 ? 선택문1 : 선택문2
+    if (user_name){
+        document.getElementById("nickname-area").innerText = user_name+"님! 환영합니다.";
+    }
+    else{
+        document.getElementById("nickname-area").innerText = "닉네임을 설정해주세요";
+    }
 
 </script>
 </html>

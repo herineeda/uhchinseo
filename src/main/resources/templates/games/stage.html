@@ -10,6 +10,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/js/name.js"></script>
+    <script src="/js/script.js"></script>
 </head>
 <body id="page-top">
 <!-- Modal 모달 창  -->
@@ -85,11 +87,21 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="/js/name.js"></script>
-    <script src="/js/script.js"></script>
+
+
 </div>
 </body>
 <script>
-    document.getElementById()
+    let user_name;
+    user_name = localStorage.getItem('user_name');
+    console.log('user_name'+user_name);
+    // user_name = NULL이면 false
+    // 조건문 ? 선택문1 : 선택문2
+    if (user_name){
+        document.getElementById("nickname-area").innerText = user_name+"님! 환영합니다.";
+    }
+    else{
+        document.getElementById("nickname-area").innerText = "닉네임을 설정해주세요";
+    }
 </script>
 </html>

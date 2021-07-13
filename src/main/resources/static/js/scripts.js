@@ -66,7 +66,6 @@ window.addEventListener('DOMContentLoaded', event => {
     // 조건문 ? 선택문1 : 선택문2
     if (user_name){
         document.getElementById("nickname-area").innerText = user_name+"님! 환영합니다.";
-
         console.log(btn_name);
         //btn_name.innerText ='click';
     }
