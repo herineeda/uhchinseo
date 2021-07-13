@@ -53,12 +53,12 @@
 <!-- Modal 모달 창  -->
 <div id="popup" class="hide">
 	<!-- 여기 수정해라 @다은이 -->
-<div class="content">
-    &#128536; 어친소 &#128536;
-		<h3 class="modal_text">? 닉네임을 등록/변경 하시겠습니까 ?</h3>
-        <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_input modal_content"/>
+<div class="content" id="modal_back">
+        <h2 id="modal_h2_text" style="color: black; text-align: center; color: black;background-color: #FFCF37;">&#128536; 어친소 &#128536;</h2>
+		<h3 class="modal_text" style="color: black; margin: 20px;">? 닉네임을 등록/변경 하시겠습니까 ?</h3>
+        <input type="text" id="user_name" onfocus="this.value=''" value="닉네임을 입력하세요" class="modal_input modal_content" />
 		<br>
-        <button id="confirm-btn" >확인</button>
+        <button id="confirm-btn" onclick="closePopup();" >확인</button>
 		<br>
 		<button id="close-btn" onclick="closePopup();">닫기</button>
 </div></div>
