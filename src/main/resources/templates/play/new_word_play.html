@@ -165,13 +165,9 @@
             question.innerHTML=questionList[0];
 
             // 선택지 정보 입력 (radio,label값 둘다 바꿔야함)
-            // document.getElementById("select").value = selectionList[0];
-            // document.getElementById("select2").value = selectionList[1];
-            // document.getElementById("select3").value = selectionList[2];
-
-            document.getElementById('check_1').innerHTML =  selectionList[0];
-            document.getElementById('check_2').innerHTML =  selectionList[1];
-            document.getElementById('check_3').innerHTML =  selectionList[2];
+            // document.getElementById('check_1').innerHTML =  selectionList[0];
+            // document.getElementById('check_2').innerHTML =  selectionList[1];
+            // document.getElementById('check_3').innerHTML =  selectionList[2];
 
 
             answer_arr[0] = answerList[0];
@@ -189,15 +185,62 @@
 			img_number = 'game-background-' + rand_bg_num;
 			document.getElementById('question-background').classList.add(img_number);
 
+            const answer_origin = [];
+            const selection_origin = [];
+
+            for(let k=0; k<3; k++){
+                selection_origin[k] = selectionList[k];
+            }
+            console.log(selection_origin);
+
+            for(let k=0; k<3; k++){
+                answer_origin[k] = answerList[k];
+            }
+            console.log(answer_origin);
+
+
+            // 새로 정렬이 완료된 배열
+            let ran_selection = [] // 선택지 랜덤 정렬된 것
+            let ran_answer = [] // 선택지에 맞게 정답 랜덤 정렬된 것
+
+            let rand_idx
+
+            function shuffleRandom(selection_origin, answer_origin){
+                // 선택지 2개 짜리는 i<3 대신 i<2로 수정~!
+                for(let i=0; i<3; i++){
+                    // console.log("배열 현재 길이는??",selection_origin.length)
+                    rand_idx = Math.floor(Math.random() * selection_origin.length);
+                    // console.log(rand_idx)
+
+                    ran_selection[i] = selection_origin[rand_idx];
+                    ran_answer[i] = answer_origin[rand_idx];
+                    console.log(ran_selection)
+                    console.log(ran_answer)
+
+                    selection_origin.splice(rand_idx, 1);
+                    answer_origin.splice(rand_idx, 1);
+                }
+                // console.log(ran_selection)
+                // console.log(ran_answer)
+
+                // 결과적으로 기존 배열에 있는 값들은 모두 사라지고 새로 정렬이 완료된 배열에 값이 모두 차게 됨
+            }
+            // 섞기
+            shuffleRandom(selection_origin, answer_origin)
+
+            console.log(ran_selection, ran_answer);
+
+            // 선택지 배열
+            document.getElementById('check_1').innerHTML = ran_selection[0];
+            document.getElementById('check_2').innerHTML = ran_selection[1];
+            document.getElementById('check_3').innerHTML = ran_selection[2];
 
             // 정답 인덱스 저장
             let Y_answer;
             for (let i=0; i<3; i++){
             	//console.log(answer_arr[i]);
-                if (answer_arr[i]=='Y'){
+                if (ran_answer[i]=='Y'){
                     Y_answer = Number(i+1);
-                    //console.log("뭐냐이ㅣ거"+ i);
-                    //console.log("정답"+Y_answer);
                 }
             }
 
@@ -225,7 +268,7 @@
                     document.getElementById('result-div').style.display = 'none';
 
                     // 정답 체크 후 점수 올리기
-                    if (answer_arr[user_answer]=='Y'){
+                    if (ran_answer[user_answer]=='Y'){
                         // score 증가 , 정답 label 색상 green으로 바꾸기
                         console.log('정답 클릭');
                         score += 10;
@@ -277,25 +320,26 @@
                             s_arr2 = f_arr[2].split('/');
                             s_arr3 = f_arr[3].split('/');
 
+                            question.innerHTML=s_arr1[0];
+
                             // 정답 배열로 저장
-                            answer_arr[0] = s_arr1[2];
-                            answer_arr[1] = s_arr2[2];
-                            answer_arr[2] = s_arr3[2];
+                            answer_origin[0] = s_arr1[2];
+                            answer_origin[1] = s_arr2[2];
+                            answer_origin[2] = s_arr3[2];
 
-                            // document.getElementById("select").value = s_arr1[1];
-                            // document.getElementById("select2").value =  s_arr2[1];
-                            // document.getElementById("select3").value =  s_arr3[1];
+                            // 선택지 저장
+                            selection_origin[0] = s_arr1[1];
+                            selection_origin[1] = s_arr2[1];
+                            selection_origin[2] = s_arr3[1];
+                            // console.log(selection_origin);
 
-                            // 정답여부 배열 저장
+                            shuffleRandom(selection_origin, answer_origin)
 
-                            console.log(answer_arr)
                             // 정답 인덱스 저장
                             let Y_answer;
                             for (let i=0; i<3; i++){
-                                if(answer_arr[i]=="Y"){
+                                if(ran_answer[i]=="Y"){
                                     Y_answer = i+1;
-                                    // console.log("뭐냐이ㅣ거"+ i);
-                    				// console.log("정답"+Y_answer);
                                 }
                             }
                             c_answer = 'check_'+ Y_answer;
@@ -312,12 +356,10 @@
 							document.getElementById('question-background').classList.add(img_number);
 
                             // 선택지 배열
-                            document.getElementById('check_1').innerHTML =  s_arr1[1];
-                            document.getElementById('check_2').innerHTML =  s_arr2[1];
-                            document.getElementById('check_3').innerHTML =  s_arr3[1];
+                            document.getElementById('check_1').innerHTML =  ran_selection[0];
+                            document.getElementById('check_2').innerHTML =  ran_selection[1];
+                            document.getElementById('check_3').innerHTML =  ran_selection[2];
 
-
-                            question.innerHTML=s_arr1[0];
                         });
 
 
