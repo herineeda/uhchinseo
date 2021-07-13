@@ -149,18 +149,63 @@
     console.log(selectionList);
     console.log(yearList);
 
-    document.getElementById('check_1').innerHTML =  selectionList[0];
-    document.getElementById('check_2').innerHTML =  selectionList[1];
+
+    const answer_origin = [];
+    const selection_origin = [];
+    const year_origin = [];
+
+    for(let k=0; k<2; k++){
+        selection_origin[k] = selectionList[k];
+    }
+    console.log(selection_origin);
+
+    for(let k=0; k<2; k++){
+        answer_origin[k] = answerList[k];
+    }
+    console.log(answer_origin);
 
 
-    answer_arr[0] = answerList[0];
-    answer_arr[1] = answerList[1];
-    console.log(answer_arr);
+    year_origin[0] = yearList[0];
+    year_origin[1] = yearList[1];
 
-    year_az = yearList[0];
-    year_young = yearList[1];
 
-    console.log(year_az,year_young);
+    // 새로 정렬이 완료된 배열
+    let ran_selection = [] // 선택지 랜덤 정렬된 것
+    let ran_answer = [] // 선택지에 맞게 정답 랜덤 정렬된 것
+    let ran_year = [] // 선택지에 맞게 연도 배열정렬
+
+    let rand_idx
+
+    function shuffleRandom(selection_origin, answer_origin, year_origin){
+        // 선택지 2개 짜리는 i<3 대신 i<2로 수정~!
+        for(let i=0; i<2; i++){
+            // console.log("배열 현재 길이는??",selection_origin.length)
+            rand_idx = Math.floor(Math.random() * selection_origin.length);
+
+            ran_selection[i] = selection_origin[rand_idx];
+            ran_answer[i] = answer_origin[rand_idx];
+            ran_year[i] = year_origin[rand_idx];
+
+            console.log(ran_selection)
+            console.log(ran_answer)
+            console.log(ran_year)
+
+            selection_origin.splice(rand_idx, 1);
+            answer_origin.splice(rand_idx, 1);
+            year_origin.splice(rand_idx, 1);
+        }
+
+        // 결과적으로 기존 배열에 있는 값들은 모두 사라지고 새로 정렬이 완료된 배열에 값이 모두 차게 됨
+    }
+    // 섞기
+    shuffleRandom(selection_origin, answer_origin, year_origin)
+
+    console.log(ran_selection, ran_answer);
+    // 선택지 배열
+    document.getElementById('check_1').innerHTML = ran_selection[0];
+    document.getElementById('check_2').innerHTML = ran_selection[1];
+
+
     // 문제
     question = document.querySelector('.question');
     question.innerHTML=questionList[0];
@@ -172,19 +217,9 @@
 	console.log(img_number);
 	document.getElementById('az-test-background').classList.add(img_number);
 
-    for (let i=0; i<2; i++){
-        if(answer_arr[i]=="A"){
-            Y_answer = i+1;
-        }
-    }
-    console.log('Y_answer: '+ Y_answer);
-
     let next_btn;
     next_btn = document.getElementById('show_next');
 
-    let c_answer;
-    c_answer = 'check_'+ Y_answer;
-    console.log(Y_answer);
 
     let check_answer_btn;
     check_answer_btn = document.querySelector('#show_answer');
@@ -205,7 +240,7 @@
             document.getElementById('result-div').style.display = 'none';
 
             // 정답 체크 후 점수 올리기
-            if (answer_arr[user_answer]=='A'){  // 아재력 up
+            if (ran_answer[user_answer]=='A'){  // 아재력 up
                 // score 증가 , 정답 label 색상 green으로 바꾸기
                 console.log('정답 클릭');
                 score += 10;
@@ -219,8 +254,9 @@
             }
             //
             // document.getElementById(c_answer).style.backgroundColor = "green";
-            document.getElementById('check_1').innerHTML = year_az;
-            document.getElementById('check_2').innerHTML = year_young;
+
+            document.getElementById('check_1').innerHTML = ran_year[0];
+            document.getElementById('check_2').innerHTML = ran_year[1];
 
             if (pageNum==10){
                 next_btn.style.display='none';
@@ -237,7 +273,7 @@
         console.log(pageNum+'번째 문제')
         console.log('다음 버튼 클릭!');
 
-        document.getElementById(c_answer).style.backgroundColor = 'white';
+        // document.getElementById(c_answer).style.backgroundColor = 'white';
         // 버튼 선택값 없애기
         $("input:radio[name='shop']:radio[value='0']").prop('checked', false); // 해제하기
         $("input:radio[name='shop']:radio[value='1']").prop('checked', false); // 해제하기
@@ -257,20 +293,22 @@
                 s_arr1 = f_arr[1].split('/');
                 s_arr2 = f_arr[2].split('/');
 
-                // 정답 배열로 저장
-                answer_arr[0] = s_arr1[2];
-                answer_arr[1] = s_arr2[2];
-
                 question.innerHTML=s_arr1[0];
-                console.log(answer_arr);
-                // 정답여부 배열 저장
-                console.log(answer_arr)
-                for (let i=0; i<2; i++){
-                    if(answer_arr[i]=="A"){
-                        Y_answer = i+1;
-                    }
-                }
-                c_answer = 'check_'+ Y_answer;
+
+                // 정답 배열로 저장
+                answer_origin[0] = s_arr1[2];
+                answer_origin[1] = s_arr2[2];
+
+                // 선택지 저장
+                selection_origin[0] = s_arr1[1];
+                selection_origin[1] = s_arr2[1];
+                // console.log(selection_origin);
+
+                // 년도 저장
+                console.log(s_arr1[3],s_arr2[3]);
+                year_origin[0] = s_arr1[3];
+                year_origin[1] = s_arr2[3];
+                shuffleRandom(selection_origin, answer_origin,year_origin)
 
                 // 배경 이미지 랜덤 설정
 				// 기존 배경 이미지 삭제
@@ -284,12 +322,10 @@
 				document.getElementById('az-test-background').classList.add(img_number);
 
                 // 선택지 배열
-                document.getElementById('check_1').innerHTML = s_arr1[1];
-                document.getElementById('check_2').innerHTML = s_arr2[1];
+                document.getElementById('check_1').innerHTML = ran_selection[0];
+                document.getElementById('check_2').innerHTML = ran_selection[1];
 
                 console.log(s_arr1[3],s_arr2[3]);
-                year_az = s_arr1[3];
-                year_young = s_arr2[3];
 
             });
 
