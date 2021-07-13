@@ -117,7 +117,7 @@
             let f_arr =[];
             let s_arr1;
             let s_arr2;
-            let answer_arr = [];
+
 
             /*<![CDATA[*/
 
@@ -128,8 +128,8 @@
             /*[/]*/
 
             /*]]>*/
-            // console.log(questionList);
-            // console.log(categoryList);
+
+
             $(document).ready(function(){
                 $(".first").on("click", function(){
                     // 왼쪽 선택지 클릭
@@ -168,8 +168,38 @@
                 });
             });
 
-            document.querySelector('.first').innerHTML = questionList[0];
-            document.querySelector('.second').innerHTML = questionList[1];
+            const selection_origin = [];
+
+            for(let k=0; k<3; k++){
+                selection_origin[k] = questionList[k];
+            }
+            console.log(selection_origin);
+
+            // 새로 정렬이 완료된 배열
+            let ran_selection = [] // 선택지 랜덤 정렬된 것
+            let rand_idx
+
+            function shuffleRandom(selection_origin){
+                // 선택지 2개 짜리는 i<3 대신 i<2로 수정~!
+                for(let i=0; i<2; i++){
+                    rand_idx = Math.floor(Math.random() * selection_origin.length);
+
+                    ran_selection[i] = selection_origin[rand_idx];
+                    console.log(ran_selection)
+
+                    selection_origin.splice(rand_idx, 1);
+
+                }
+                // 결과적으로 기존 배열에 있는 값들은 모두 사라지고 새로 정렬이 완료된 배열에 값이 모두 차게 됨
+            }
+            // 섞기
+            shuffleRandom(selection_origin)
+            console.log(ran_selection);
+
+            // 선택지 배열
+            document.getElementById('check_1').innerHTML = ran_selection[0];
+            document.getElementById('check_2').innerHTML = ran_selection[1];
+
 
             function go_next(){
 				if(document.getElementById('balance-background-1').classList.contains(img_number)){
@@ -195,51 +225,19 @@
 
                         s_arr1 = f_arr[1].split('/');
                         s_arr2 = f_arr[2].split('/');
-                        // s_arr3 = f_arr[3].split('/');
-                        //
-                        // console.log('1번선택지 cnt'+s_arr1[2]);
-                        // console.log('1번선택지 cnt'+s_arr2[2]);
 
-                        document.querySelector('.first').innerHTML = s_arr1[0];
-                        document.querySelector('.second').innerHTML = s_arr2[0];
+                        // 선택지 저장
+                        selection_origin[0] = s_arr1[0];
+                        selection_origin[1] = s_arr2[0];
+
+                        shuffleRandom(selection_origin);
+
+                        document.querySelector('.first').innerHTML = ran_selection[0];
+                        document.querySelector('.second').innerHTML = ran_selection[1];
 
                     });
 
             }
-
-            // next버튼 눌렀을 때 api재 호출하기 (pageNum +1 해서)
-            let next_btn;
-            next_btn = document.getElementById('next-btn');
-
-            // next_btn.addEventListener('click', function(){
-            //     console.log('버튼 클릭!');
-            //     pageNum += 1;
-            //
-            //     if (pageNum==10){
-            //         document.getElementById('restart').style.display ='block';
-            //         document.getElementById('home').style.display ='block';
-            //         next_btn.style.display='none';
-            //     }
-            //     console.log(pageNum)
-            //     fetch(`http://localhost:8081/balanceGame?pageNum=${pageNum}`)
-            //         .then(res => res.text())
-            //         .then(res => {
-            //             console.log(res)
-            //             f_arr = res.split("<td class=\"invisible-but-need\">")
-            //             console.log(f_arr)
-            //
-            //             s_arr1 = f_arr[1].split('/');
-            //             s_arr2 = f_arr[2].split('/');
-            //             // s_arr3 = f_arr[3].split('/');
-            //             //
-            //             // console.log('1번선택지 cnt'+s_arr1[2]);
-            //             // console.log('1번선택지 cnt'+s_arr2[2]);
-            //
-            //             document.querySelector('.first').innerHTML = s_arr1[0];
-            //             document.querySelector('.second').innerHTML = s_arr2[0];
-            //
-            //         });
-            // });
 
         </script>
     </body>
