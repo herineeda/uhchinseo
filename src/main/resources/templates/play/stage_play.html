@@ -191,20 +191,20 @@
 
             console.log(ran_selection, ran_answer);
             // 선택지 배열
-            document.getElementById('check_1').innerHTML = selection_origin[0];
-            document.getElementById('check_2').innerHTML = selection_origin[1];
-            document.getElementById('check_3').innerHTML = selection_origin[2];
+            document.getElementById('check_1').innerHTML = ran_selection[0];
+            document.getElementById('check_2').innerHTML = ran_selection[1];
+            document.getElementById('check_3').innerHTML = ran_selection[2];
 
             // 정답 인덱스 저장
             let Y_answer;
             for (let i=0; i<3; i++){
-                if(answer_origin[i]=="Y"){
+                if(ran_answer[i]=="Y"){
                     Y_answer = i+1;
                 }
             }
             let c_answer;
             c_answer = 'check_'+ Y_answer;
-
+            console.log('c_answer :'+c_answer);
             img_id.src = '/assets/img/games_image/'+imgList[0]+'.png';
             console.log(imgList[0]);
 
@@ -228,7 +228,7 @@
                     document.getElementById('result-div').style.display = 'none';
 
                     // 정답 체크 후 점수 올리기
-                    if (answer_arr[user_answer]=='Y'){
+                    if (ran_answer[user_answer]=='Y'){
                         // score 증가 , 정답 label 색상 green으로 바꾸기
                         console.log('정답 클릭');
                         score += 10;
@@ -284,24 +284,24 @@
                         selection_origin[0] = s_arr1[0];
                         selection_origin[1] = s_arr2[0];
                         selection_origin[2] = s_arr3[0];
-                        console.log(selection_origin);
+                        // console.log(selection_origin);
 
                         // 정답 저장
                         answer_origin[0] = s_arr1[1];
                         answer_origin[1] = s_arr2[1];
                         answer_origin[2] = s_arr3[1];
-                        console.log(answer_origin);
+                        // console.log(answer_origin);
 
                         shuffleRandom(selection_origin, answer_origin)
 
                         // 선택지 배열
-                        document.getElementById('check_1').innerHTML =  selection_origin[0];
-                        document.getElementById('check_2').innerHTML =  selection_origin[1];
-                        document.getElementById('check_3').innerHTML =  selection_origin[2];
+                        document.getElementById('check_1').innerHTML =  ran_selection[0];
+                        document.getElementById('check_2').innerHTML =  ran_selection[1];
+                        document.getElementById('check_3').innerHTML =  ran_selection[2];
 
                         // 정답여부 배열 저장
                         for (let i=0; i<3; i++){
-                            if(answer_origin[i]=="Y"){
+                            if(ran_answer[i]=="Y"){
                                 Y_answer = i+1;
                             }
                         }
