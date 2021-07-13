@@ -131,41 +131,45 @@
 
 
             $(document).ready(function(){
+
                 $(".first").on("click", function(){
                     // 왼쪽 선택지 클릭
                     // div 영역 색상 바꾸게 설정하기
-
                     // 배경 이미지 랜덤 설정
-					// 0~ 8 중에서 하나 추출
-					rand_bg_num = Math.floor(Math.random() * 9);
-					console.log(rand_bg_num);
-					img_number = 'game-background-' + rand_bg_num;
-					document.getElementById('balance-background-1').classList.add(img_number);
+                    // 0~ 8 중에서 하나 추출
+                    if (pageNum != 11){
+                        rand_bg_num = Math.floor(Math.random() * 9);
+                        console.log(rand_bg_num);
+                        img_number = 'game-background-' + rand_bg_num;
+                        document.getElementById('balance-background-1').classList.add(img_number);
 
-                    console.log("왼쪽 클릭.");
-                    setTimeout(function() {
-                        console.log('2초 지남!');
-                        go_next();
-                    }, 2000); // 2초뒤 실행
+                        console.log("왼쪽 클릭.");
+                        setTimeout(function() {
+                            console.log('2초 지남!');
+                            go_next();
+                        }, 2000); // 2초뒤 실행
+                    }
 
                 });
                 $(".second").on("click", function(){
                     // 오른쪽 선택지 클릭
                     // div 영역 색상 바꾸게 설정하기
-
-                	// 배경 이미지 랜덤 설정
-					// 0~ 8 중에서 하나 추출
-					rand_bg_num = Math.floor(Math.random() * 9);
-					console.log(rand_bg_num);
-					img_number = 'game-background-' + rand_bg_num;
-					document.getElementById('balance-background-2').classList.add(img_number);
-                    console.log("오른쪽 클릭.");
-                    setTimeout(function() {
-                        console.log('2초 지남!');
-                        go_next();
-                    }, 2000); // 2초뒤 실행
+                    // 배경 이미지 랜덤 설정
+                    // 0~ 8 중에서 하나 추출
+                    if (pageNum != 11) {
+                        rand_bg_num = Math.floor(Math.random() * 9);
+                        console.log(rand_bg_num);
+                        img_number = 'game-background-' + rand_bg_num;
+                        document.getElementById('balance-background-2').classList.add(img_number);
+                        console.log("오른쪽 클릭.");
+                        setTimeout(function () {
+                            console.log('2초 지남!');
+                            go_next();
+                        }, 2000); // 2초뒤 실행
+                    }
 
                 });
+
             });
 
             const selection_origin = [];
