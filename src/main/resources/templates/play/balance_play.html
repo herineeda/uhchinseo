@@ -220,7 +220,7 @@
                     next_btn.style.display='none';
                 }
                 console.log(pageNum)
-                fetch(`http://localhost:8081/balanceGame?pageNum=${pageNum}`)
+                fetch(`http://34.64.245.176:8081/balanceGame?pageNum=${pageNum}`)
                     .then(res => res.text())
                     .then(res => {
                         console.log(res)
