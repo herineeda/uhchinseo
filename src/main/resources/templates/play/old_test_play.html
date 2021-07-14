@@ -283,7 +283,7 @@
         next_btn.style.display='none';
         document.getElementById('result-div').style.display = 'flex';
         console.log(pageNum)
-        fetch(`http://localhost:8081/azGame?pageNum=${pageNum}`)
+        fetch(`http://34.64.245.176:8081/azGame?pageNum=${pageNum}`)
             .then(res => res.text())
             .then(res => {
                 // console.log(res)
