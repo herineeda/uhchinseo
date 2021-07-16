@@ -65,7 +65,7 @@
                 <div class="container">
                     <div class="text-center">
                         <div class="row" style="justify-content: center;">
-                            <div class="col-lg-5 first " id="balance-background-1" style="cursor:pointer; word-break: keep-all;  border-style: dashed; border-width: 5px; padding-top:5rem; padding-bottom: 5rem; font-size:xxx-large;" >
+                            <div class="col-lg-5 first" id="balance-background-1" style="cursor:pointer; word-break: keep-all;  border-style: dashed; border-width: 5px; padding-top:5rem; padding-bottom: 5rem; font-size:xxx-large;" >
                                 똥맛 카레
                             </div>
                             <div class="col-lg-1" style="padding-top:5rem; padding-bottom: 5rem; font-size: 3rem; color:red; text-align:center">VS</div>
@@ -201,8 +201,8 @@
             console.log(ran_selection);
 
             // 선택지 배열
-            document.getElementById('check_1').innerHTML = ran_selection[0];
-            document.getElementById('check_2').innerHTML = ran_selection[1];
+			document.querySelector('.first').innerHTML = ran_selection[0];
+            document.querySelector('.second').innerHTML = ran_selection[1];
 
 
             function go_next(){
